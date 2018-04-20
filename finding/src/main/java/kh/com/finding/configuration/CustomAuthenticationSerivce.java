@@ -19,7 +19,7 @@ public class CustomAuthenticationSerivce implements UserDetailsService{
 	private UserMapper userMapper;
 	
 	@Autowired
-	private ServiceMappers serviceMapper;
+	private ServiceMappers serviceMappers;
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -34,7 +34,7 @@ public class CustomAuthenticationSerivce implements UserDetailsService{
 		}
 		
 		entityUser.setAuthorities(userMapper.loadingAuthoritiesByName(username));		
-		entityUser.setServies(serviceMapper.loadingServiceByUserName(username));
+		entityUser.setServies(serviceMappers.loadingServiceByUserName(username));
 		
 		
 		
