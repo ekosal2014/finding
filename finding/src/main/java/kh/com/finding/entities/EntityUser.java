@@ -15,10 +15,13 @@ public class EntityUser implements UserDetails {
 	private static final long serialVersionUID = 1L;
 	
 	private String user_cd ;
+	private String fullname;
 	private String username;
 	private String password;
+	private String email   ;
 	private String reg_dt  ;
 	private String sts     ;
+	private String image   ;
 	private List<EntityRole> authorities;	
 	private List<EntityService> servies;
 	
@@ -33,6 +36,16 @@ public class EntityUser implements UserDetails {
 	}
 
 
+	public String getFullname() {
+		return fullname;
+	}
+
+
+	public void setFullname(String fullname) {
+		this.fullname = fullname;
+	}
+
+
 	public void setUsername(String username) {
 		this.username = username;
 	}
@@ -40,6 +53,16 @@ public class EntityUser implements UserDetails {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 
@@ -63,7 +86,14 @@ public class EntityUser implements UserDetails {
 	}
 
 
-	
+	public String getImage() {
+		return image;
+	}
+
+
+	public void setImage(String image) {
+		this.image = image;
+	}
 
 
 	public void setAuthorities(List<EntityRole> authorities) {
