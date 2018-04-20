@@ -1,6 +1,6 @@
 package kh.com.finding.configuration;
 
-import java.util.Collections;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import kh.com.finding.entities.EntityUser;
+import kh.com.finding.mappers.ServiceMappers;
 import kh.com.finding.mappers.UserMapper;
 
 @Service("customAuthenticationSerivce")
@@ -17,23 +18,27 @@ public class CustomAuthenticationSerivce implements UserDetailsService{
 	@Autowired
 	private UserMapper userMapper;
 	
+	@Autowired
+	private ServiceMappers serviceMapper;
+	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		// TODO Auto-generated method stub
 		
-		EntityUser user = userMapper.logInByUserName(username);
+		EntityUser entityUser = userMapper.loadingByUserName(username);
 		
-		if ( user == null ){
+		if ( entityUser == null ){
 			
 			throw new UsernameNotFoundException("User Name Not match!!");
 			
 		}
 		
+		entityUser.setAuthorities(userMapper.loadingAuthoritiesByName(username));		
+		entityUser.setServies(serviceMapper.loadingServiceByUserName(username));
 		
 		
 		
-		
-		return user;
+		return entityUser;
 	}
 
 }
