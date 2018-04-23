@@ -17,8 +17,6 @@ public class UrlLocaleResolver implements LocaleResolver{
 		
 		String uri = request.getRequestURI();
 		
-		System.out.println(uri);
-		
 		String prefixEn = request.getServletContext().getContextPath() + "/en/";
 		String prefixKh = request.getServletContext().getContextPath() + "/kh/";
 		

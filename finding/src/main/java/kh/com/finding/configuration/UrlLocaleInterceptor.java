@@ -26,7 +26,7 @@ public class UrlLocaleInterceptor extends HandlerInterceptorAdapter{
 		Locale locale = localeResolver.resolveLocale(request);
 		
 		localeResolver.setLocale(request, response, locale);
-		System.out.println(" hello");
+		
 		
 		return true;
 	}
