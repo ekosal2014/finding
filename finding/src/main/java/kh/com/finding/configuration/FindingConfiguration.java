@@ -24,7 +24,9 @@ public class FindingConfiguration extends WebMvcConfigurerAdapter{
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
 		// TODO Auto-generated method stub
-		registry.addViewController("/").setViewName("index");
+/*		registry.addViewController("/").setViewName("index");
+		registry.addViewController("/kh").setViewName("index");
+		registry.addViewController("/en").setViewName("index");*/
 	}
 
 	@Bean
