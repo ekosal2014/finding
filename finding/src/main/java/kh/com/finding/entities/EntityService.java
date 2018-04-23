@@ -19,7 +19,6 @@ public class EntityService {
 	private String des_address;
 	private String sts        ;
 	
-	private List<EntityBanner> banners;
 	private List<EntityImage>  images ;
 	private List<EntityNews>   news   ;
 	
@@ -109,12 +108,7 @@ public class EntityService {
 	public void setSts(String sts) {
 		this.sts = sts;
 	}
-	public List<EntityBanner> getBanners() {
-		return banners;
-	}
-	public void setBanners(List<EntityBanner> banners) {
-		this.banners = banners;
-	}
+
 	public List<EntityImage> getImages() {
 		return images;
 	}
