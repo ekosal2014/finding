@@ -1,6 +1,5 @@
 package kh.com.finding.configuration;
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
