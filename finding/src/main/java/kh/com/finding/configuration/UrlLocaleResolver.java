@@ -5,11 +5,14 @@ import java.util.Locale;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.LocaleResolver;
 
+@Service
 public class UrlLocaleResolver implements LocaleResolver{
 
-	private static final String URL_LOCALE_ATTRIBUTE_NAME = "URL_LOCALE_ATTRIBUTE_NAME";
+	private static final String URL_LOCALE_ATTRIBUTE_NAME  = "URL_LOCALE_ATTRIBUTE_NAME";
+	private static final String URL_LOCATION_DEFAULT       = "URL_LOCATION_DEFAULT";
 	
 	@Override
 	public Locale resolveLocale(HttpServletRequest request) {
@@ -47,6 +50,9 @@ public class UrlLocaleResolver implements LocaleResolver{
 			}
 		}
 	
+		System.out.println(" url ===  " +  request.getServletContext().getContextPath() +"/"+ locale.getLanguage());
+		request.setAttribute(URL_LOCATION_DEFAULT, request.getServletContext().getContextPath() +"/"+ locale.getLanguage());
+
 		return locale;
 	}
 
