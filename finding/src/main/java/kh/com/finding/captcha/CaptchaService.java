@@ -3,7 +3,6 @@ package kh.com.finding.captcha;
 import java.net.URI;
 import java.util.regex.Pattern;
 
-import javax.management.RuntimeErrorException;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
