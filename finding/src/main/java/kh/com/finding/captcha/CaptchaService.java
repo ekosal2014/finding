@@ -3,6 +3,7 @@ package kh.com.finding.captcha;
 import java.net.URI;
 import java.util.regex.Pattern;
 
+import javax.management.RuntimeErrorException;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,12 +47,22 @@ public class CaptchaService implements ICaptchaService{
 		
 		try{
 			
+			final GoogleResponse googleRespone = restTemplate.getForObject(verityUri, GoogleResponse.class);
 			
+			System.out.println( googleRespone.toString());
+			
+			if (!googleRespone.isSuccess()) {
+				if (googleRespone.hasClientError()) {
+					reCaptchaAttemptService.reCaptchFailed(getClientIP());
+				}
+				throw new RuntimeException("kasjdfa");
+			}
 			
 		}catch(RestClientException e){
-			e.printStackTrace();
+			throw new RuntimeException("asjkdf");
 		}
 		
+		reCaptchaAttemptService.reCaptchaSucceeded(getClientIP());
 		
 	}
 

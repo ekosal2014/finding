@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.*;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonPropertyOrder({"success","challenge_ts","hostname","error-codes"})
-public class GoogelResponse {
+public class GoogleResponse {
 	
 	@JsonProperty("success")
 	private boolean success;
@@ -96,5 +96,12 @@ public class GoogelResponse {
 		return false;
 	}
 	
+	public String toString() {
+		return "GoogleResponse : " +
+				"succuss = " + success +
+				" , hostname = " + hostname +
+				" , challenge_ts" + challenge_ts + 
+				" , error code " + errorCode;
+	}
 	
 }
