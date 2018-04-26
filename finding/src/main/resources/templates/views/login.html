@@ -3,13 +3,18 @@
 <head>
  <meta charset="UTF-8">
 <title>Insert title here</title>
+
 </head>
 <body>
  lkasdjf
+ <form action="/finding" method="post">
  <span th:utext="#{label.userName}"></span>
  <span th:utext="#{label.submit}"></span>
  <span th:utext="#{label.password}"></span>
+<a th:href="@{/kh/{url}(url=${session.URL_CHANGE_LEANGUAGE})}">khmer</a>
+<a th:href="@{/en/{url}(url=${session.URL_CHANGE_LEANGUAGE})}">english</a>
  
- 
+<input type="submit" value="submit">
+</form>
 </body>
 </html>

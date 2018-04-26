@@ -1,10 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="https://www.thymeleaf.org">
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
+<script src='https://www.google.com/recaptcha/api.js'></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
+<form th:action="@{/{url}/register(url=${session.URL_LOCATION_DEFAULT})}" th:method="POST" id="frm-login">
+<input type="text" name="fullname">
+<input type="text" name="email">
+<input type="text" name="username">
+<input type="password" name="password">
+<input type="password" name="comfirmpasswor">
+ <div class="g-recaptcha col-sm-5"
+          th:attr="data-sitekey=6LeTp1UUAAAAAPYJjseRXl_YCurNDWEd_TdzoHcD"></div>
+        <span id="captchaError" class="alert alert-danger col-sm-4"
+          style="display:none"></span>
+<a href="javascript:" class="btn_login" id="btnLogin">register</a>
+</form>
+
+
+	<script>
+		$(document).ready(function(){
+			$('#btnLogin').click(function(){
+				$('#frm-login').submit();
+			});
+			$('#frm-login').submit(function(e) {
+				var frm = $('#frm-login');
+				e.preventDefault();
+				var data = {};
+
+				$.each(this,function(i,v){
+					var input = $(v);
+					data[input.attr("name")] = input.val();
+					delete(data["undefined"])
+				});
+				console.log(data);
+				 $.ajax({
+			            type: frm.attr('method'),
+			            url: frm.attr('action'),
+			            data : data,
+			            success : function(json){
+			            	console.log(json);
+			            	
+			            	           	
+			            },
+			            error : function(){
+			               console.log('error');
+			            }
+			        });
+		        
+			});
+		});
+	</script>
 
 </body>
 </html>

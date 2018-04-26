@@ -6,7 +6,9 @@
 </head>
 <body>
 	kladfjalkdsjfalk
-	<a th:href="${url/login2}">Login</a>
-	<p th:text="${url}">.....</p>
-</body>
+	<a th:href="@{/{url}/login(url=${session.URL_LOCATION_DEFAULT})}">Login</a>
+	<a th:href="@{/kh{url}(url=${session.URL_CHANGE_LEANGUAGE})}">khmer</a>
+	<a th:href="@{/en{url}(url=${session.URL_CHANGE_LEANGUAGE})}">english</a>
+	<a th:href="@{/{url}/register(url=${session.URL_LOCATION_DEFAULT})}">Register</a>
+</body> 
 </html>
