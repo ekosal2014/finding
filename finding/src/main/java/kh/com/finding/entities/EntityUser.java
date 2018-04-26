@@ -15,8 +15,8 @@ public class EntityUser implements UserDetails {
 	private static final long serialVersionUID = 1L;
 	
 	private String user_cd ;
-	private String fullname;
-	private String username;
+	private String full_name;
+	private String user_name;
 	private String password;
 	private String email   ;
 	private String reg_dt  ;
@@ -37,17 +37,17 @@ public class EntityUser implements UserDetails {
 
 
 	public String getFullname() {
-		return fullname;
+		return full_name;
 	}
 
 
 	public void setFullname(String fullname) {
-		this.fullname = fullname;
+		this.full_name = fullname;
 	}
 
 
 	public void setUsername(String username) {
-		this.username = username;
+		this.user_name = username;
 	}
 
 
@@ -126,7 +126,7 @@ public class EntityUser implements UserDetails {
 	@Override
 	public String getUsername() {
 		// TODO Auto-generated method stub
-		return this.username;
+		return this.user_name;
 	}
 
 	@Override
@@ -153,4 +153,16 @@ public class EntityUser implements UserDetails {
 		return sts ==  "1" ? true : false;
 	}
 
+
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "Full Name = " + this.full_name + "\n" + 
+			   "Email     = " + this.email     + "\n" +
+		       "User Name = " + this.user_name + "\n" +
+			   "Password  = " + this.password  + "\n" ;
+	}
+
+	
+	
 }

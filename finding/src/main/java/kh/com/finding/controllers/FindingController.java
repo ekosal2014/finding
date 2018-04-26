@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kh.com.finding.captcha.ICaptchaService;
+import kh.com.finding.entities.EntityUser;
 
 
 @Controller
@@ -34,7 +35,8 @@ public class FindingController {
 	}
 	
 	@RequestMapping(value = "/{locale:en|kh}/register", method = RequestMethod.POST)
-	public @ResponseBody String registerUser(HttpServletRequest request){	  
+	public @ResponseBody String registerUser(EntityUser entityUser,  HttpServletRequest request){	  
+		System.out.println(entityUser.toString());
 		iCaptchaService.processResponse(request.getParameter("g-recaptcha-response"));
 		return "register";
 	}

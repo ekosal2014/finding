@@ -8,10 +8,15 @@
 </head>
 <body>
 <form th:action="@{/{url}/register(url=${session.URL_LOCATION_DEFAULT})}" th:method="POST" id="frm-login">
-<input type="text" name="fullname">
-<input type="text" name="email">
-<input type="text" name="username">
-<input type="password" name="password">
+<label >Full Name </label>
+<input type="text" name="fullname"><br>
+<label>E mail</label>
+<input type="text" name="email"><br>
+<label>User Name </label>
+<input type="text" name="username"><br>
+<label>Password</label>
+<input type="password" name="password"><br>
+<label>Comfirm PassWrod</label>
 <input type="password" name="comfirmpasswor">
  <div class="g-recaptcha col-sm-5"
           th:attr="data-sitekey=6LeTp1UUAAAAAPYJjseRXl_YCurNDWEd_TdzoHcD"></div>
