@@ -50,7 +50,7 @@ public class FindingController {
 		
 		UserValidator userValidator = new UserValidator();
 		userValidator.validate(entityUser, result);
-		System.out.println(messageSource.getMessage("", new String(), LocaleContextHolder.getLocale().getLanguage()));
+		//System.out.println(messageSource.getMessage("", new String(), LocaleContextHolder.getLocale().getLanguage()));
 		
 		JsonResponses json = new JsonResponses();
 		
