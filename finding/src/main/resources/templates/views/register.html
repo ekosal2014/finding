@@ -9,11 +9,11 @@
 <body>
 <form th:action="@{/{url}/register(url=${session.URL_LOCATION_DEFAULT})}" th:method="POST" id="frm-login">
 <label >Full Name </label>
-<input type="text" name="fullname"><br>
+<input type="text" name="full_name"><br>
 <label>E mail</label>
 <input type="text" name="email"><br>
 <label>User Name </label>
-<input type="text" name="username"><br>
+<input type="text" name="user_name"><br>
 <label>Password</label>
 <input type="password" name="password"><br>
 <label>Comfirm PassWrod</label>
@@ -48,11 +48,10 @@
 			            data : data,
 			            success : function(json){
 			            	console.log(json);
-			            	
 			            	           	
 			            },
-			            error : function(){
-			               console.log('error');
+			            error : function(data){
+			             
 			            }
 			        });
 		        

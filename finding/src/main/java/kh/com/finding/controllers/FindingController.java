@@ -1,15 +1,22 @@
 package kh.com.finding.controllers;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kh.com.finding.captcha.ICaptchaService;
 import kh.com.finding.entities.EntityUser;
+import kh.com.finding.utils.JsonResponses;
+import kh.com.finding.validations.UserValidator;
 
 
 @Controller
@@ -18,6 +25,10 @@ public class FindingController {
 	
 	@Autowired
 	private ICaptchaService iCaptchaService;
+
+	@Autowired
+	private MessageSource messageSource;
+	
 	
 	@RequestMapping(value = {"/{locale:en|kh}","/"}, method = RequestMethod.GET)
 	public String loadingHome(){
@@ -35,10 +46,25 @@ public class FindingController {
 	}
 	
 	@RequestMapping(value = "/{locale:en|kh}/register", method = RequestMethod.POST)
-	public @ResponseBody String registerUser(EntityUser entityUser,  HttpServletRequest request){	  
-		System.out.println(entityUser.toString());
+	public @ResponseBody JsonResponses registerUser(@Valid @ModelAttribute EntityUser entityUser ,  HttpServletRequest request,BindingResult result){	  
+		
+		UserValidator userValidator = new UserValidator();
+		userValidator.validate(entityUser, result);
+		System.out.println(messageSource.getMessage("", new String(), LocaleContextHolder.getLocale().getLanguage()));
+		
+		JsonResponses json = new JsonResponses();
+		
+		if ( result.hasErrors() ){
+			
+			json.setStatus("9999");
+			json.setResutl(result.getAllErrors());
+			
+		}else{
+			
+		}
+		
 		iCaptchaService.processResponse(request.getParameter("g-recaptcha-response"));
-		return "register";
+		return json;
 	}
 	
 	

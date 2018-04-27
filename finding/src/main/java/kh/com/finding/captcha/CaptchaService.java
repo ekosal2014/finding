@@ -33,7 +33,7 @@ public class CaptchaService implements ICaptchaService{
 	@Override
 	public void processResponse(String response) {
 		// TODO Auto-generated method stub
-		//System.out.println(" adfasdf " + getClientIP());
+
 		if (reCaptchaAttemptService.isBlock(getClientIP())){
 			throw new RuntimeException("reCaptchaAttemptService");
 		}
