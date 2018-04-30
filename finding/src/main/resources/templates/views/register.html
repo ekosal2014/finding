@@ -8,15 +8,16 @@
 </head>
 <body>
 <form th:action="@{/{url}/register(url=${session.URL_LOCATION_DEFAULT})}" th:method="POST" id="frm-login">
-<label >Full Name </label>
+<div id="error"></div>
+<label th:utext="#{label.userName}"></label>
 <input type="text" name="full_name"><br>
-<label>E mail</label>
+<label th:utext="#{label.email}"></label>
 <input type="text" name="email"><br>
-<label>User Name </label>
+<label th:utext="#{label.userName}">User Name </label>
 <input type="text" name="user_name"><br>
-<label>Password</label>
+<label th:utext="#{label.password}">Password</label>
 <input type="password" name="password"><br>
-<label>Comfirm PassWrod</label>
+<label th:utext="#{label.password}">Comfirm PassWrod</label>
 <input type="password" name="comfirmpasswor">
  <div class="g-recaptcha col-sm-5"
           th:attr="data-sitekey=6LeTp1UUAAAAAPYJjseRXl_YCurNDWEd_TdzoHcD"></div>
@@ -48,6 +49,9 @@
 			            data : data,
 			            success : function(json){
 			            	console.log(json);
+			            	for(var i=0; i<json['result'].length;i++){
+			            									            
+			            	}
 			            	           	
 			            },
 			            error : function(data){

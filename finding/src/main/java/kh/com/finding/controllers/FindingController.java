@@ -8,6 +8,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,6 +30,9 @@ public class FindingController {
 	@Autowired
 	private MessageSource messageSource;
 	
+	@Autowired
+	UserValidator userValidator;
+	
 	
 	@RequestMapping(value = {"/{locale:en|kh}","/"}, method = RequestMethod.GET)
 	public String loadingHome(){
@@ -47,23 +51,25 @@ public class FindingController {
 	
 	@RequestMapping(value = "/{locale:en|kh}/register", method = RequestMethod.POST)
 	public @ResponseBody JsonResponses registerUser(@Valid @ModelAttribute EntityUser entityUser ,  HttpServletRequest request,BindingResult result){	  
+
+		userValidator.validate(entityUser, result);	
 		
-		UserValidator userValidator = new UserValidator();
-		userValidator.validate(entityUser, result);
-		//System.out.println(messageSource.getMessage("", new String(), LocaleContextHolder.getLocale().getLanguage()));
+		if ( !iCaptchaService.processResponse(request.getParameter("g-recaptcha-response"),result) ){
+			ObjectError error = new ObjectError("g-recaptcha-response",new String[]{"g-recaptcha-response"},null, messageSource.getMessage("msg.reg.captchaError"   , null ,LocaleContextHolder.getLocale()));
+			result.addError(error);
+		}
 		
-		JsonResponses json = new JsonResponses();
+		JsonResponses json = new JsonResponses();	
 		
-		if ( result.hasErrors() ){
-			
+		if ( result.hasErrors() ){			
 			json.setStatus("9999");
 			json.setResutl(result.getAllErrors());
 			
 		}else{
-			
+			json.setStatus("0000");
+			json.setResutl("success");
 		}
 		
-		iCaptchaService.processResponse(request.getParameter("g-recaptcha-response"));
 		return json;
 	}
 	
