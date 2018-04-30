@@ -48,11 +48,14 @@
 			            url: frm.attr('action'),
 			            data : data,
 			            success : function(json){
-			            	console.log(json);
-			            	for(var i=0; i<json['result'].length;i++){
-			            									            
+			            	if (json['status'] == '9999'){
+			            		for(var i=0; i<json['result'].length;i++){
+						            
+				            	}
+			            	}else{
+			            		
 			            	}
-			            	           	
+          	
 			            },
 			            error : function(data){
 			             
