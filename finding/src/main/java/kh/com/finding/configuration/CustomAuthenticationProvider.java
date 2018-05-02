@@ -39,7 +39,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider{
 		}
 		
 		Collection< ? extends GrantedAuthority> authorties = entityuser.getAuthorities();
-		
+		System.out.println(entityuser.toString());
 		return new UsernamePasswordAuthenticationToken(entityuser, entityuser.getPassword(), authorties);
 		
 	}

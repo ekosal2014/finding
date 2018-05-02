@@ -167,7 +167,8 @@ public class EntityUser implements UserDetails {
 	@Override
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
-		return sts ==  "1" ? true : false;
+		System.out.println(" ======= " + this.sts);
+		return this.sts.equals("1") ? true : false;
 	}
 
 
