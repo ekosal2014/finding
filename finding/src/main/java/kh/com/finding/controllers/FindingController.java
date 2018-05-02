@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import kh.com.finding.captcha.ICaptchaService;
 import kh.com.finding.entities.EntityUser;
+import kh.com.finding.utils.ConstsUtils;
 import kh.com.finding.utils.JsonResponses;
 import kh.com.finding.validations.UserValidator;
 
@@ -62,11 +63,11 @@ public class FindingController {
 		JsonResponses json = new JsonResponses();	
 		
 		if ( result.hasErrors() ){			
-			json.setStatus("9999");
+			json.setStatus(ConstsUtils.DEFAULT_ERROR_STATUS);
 			json.setResutl(result.getAllErrors());
 			
 		}else{
-			json.setStatus("0000");
+			json.setStatus(ConstsUtils.DEFAULT_SUCCESS_STATUS);
 			json.setResutl("success");
 		}
 		

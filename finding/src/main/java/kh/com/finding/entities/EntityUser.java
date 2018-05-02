@@ -19,6 +19,7 @@ public class EntityUser implements UserDetails {
 	private String full_name;
 	private String user_name;
 	private String password;
+	private String confirm_password;
 	private String email   ;
 	private String reg_dt  ;
 	private String sts     ;
@@ -37,23 +38,38 @@ public class EntityUser implements UserDetails {
 	}
 
 
-	public String getFullname() {
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
+	public String getFull_name() {
 		return full_name;
 	}
 
 
-	public void setFullname(String fullname) {
-		this.full_name = fullname;
+	public void setFull_name(String full_name) {
+		this.full_name = full_name;
 	}
 
 
-	public void setUsername(String username) {
-		this.user_name = username;
+	public String getUser_name() {
+		return user_name;
 	}
 
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
+	}
+
+
+	public String getConfirm_password() {
+		return confirm_password;
+	}
+
+
+	public void setConfirm_password(String confirm_password) {
+		this.confirm_password = confirm_password;
 	}
 
 
