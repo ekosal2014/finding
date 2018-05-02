@@ -15,7 +15,7 @@ public class EntityUser implements UserDetails {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private String user_cd ;
+	private int    user_cd ;
 	private String full_name;
 	private String user_name;
 	private String password;
@@ -28,12 +28,12 @@ public class EntityUser implements UserDetails {
 	private List<EntityService> servies;
 	
 
-	public String getUser_cd() {
+	public int getUser_cd() {
 		return user_cd;
 	}
 
 
-	public void setUser_cd(String user_cd) {
+	public void setUser_cd(int user_cd) {
 		this.user_cd = user_cd;
 	}
 

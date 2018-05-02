@@ -31,7 +31,7 @@
 		WHERE user_name = #{username}
 	</select>
 	
-	<insert id="registerUserInfo" parameterType="kh.com.finding.entities.EntityUser">
+	<insert id="registerUserInfo" parameterType="kh.com.finding.entities.EntityUser" useGeneratedKeys="true" keyProperty="user_cd">
 		
 		INSERT INTO 
 			user_info (
@@ -52,8 +52,22 @@
 			
 					  )
 			
+			 <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="user_cd">
+		         SELECT CAST(CURRVAL('user_info_seq') as INTEGER) 
+		    </selectKey>
 	
+	</insert>
 	
+	<insert id="registerUserRole" parameterType="kh.com.finding.entities.EntityUserRole">
+			INSERT INTO user_role_details 
+			            (
+			            	 user_cd
+			            	,role_cd
+			            )
+			VALUES      (
+							  #{user_cd}
+							, #{role_cd}
+						)
 	</insert>
 
 </mapper>

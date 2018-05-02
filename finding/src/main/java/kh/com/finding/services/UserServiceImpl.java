@@ -5,6 +5,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import kh.com.finding.entities.EntityUser;
+import kh.com.finding.entities.EntityUserRole;
 import kh.com.finding.mappers.UserMapper;
 import kh.com.finding.utils.ConstsUtils;
 import kh.com.finding.utils.DateUtils;
@@ -20,8 +21,8 @@ public class UserServiceImpl{
 	
 	public JsonResponses registerUserInfo(EntityUser entityUser){
 		
-		JsonResponses json = new JsonResponses();
-		
+		JsonResponses  json      = new JsonResponses();
+		EntityUserRole userRole  = new EntityUserRole();
 		try{
 			
 			entityUser.setReg_dt(DateUtils.getDate());
@@ -29,6 +30,11 @@ public class UserServiceImpl{
 			entityUser.setPassword(passwordEncoder.encode(entityUser.getPassword()));
 			System.out.println(entityUser.toString());
 			userMapper.registerUserInfo(entityUser);
+			
+			userRole.setUser_cd(entityUser.getUser_cd());
+			userRole.setRole_cd(0);
+			userMapper.registerUserRole(userRole);
+			
 			json.setStatus(ConstsUtils.DEFAULT_SUCCESS_STATUS);
 			json.setResutl("success");
 		}catch(Exception e){
