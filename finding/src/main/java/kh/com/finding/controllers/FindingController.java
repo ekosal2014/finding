@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import kh.com.finding.captcha.ICaptchaService;
 import kh.com.finding.entities.EntityUser;
+import kh.com.finding.services.UserServiceImpl;
 import kh.com.finding.utils.ConstsUtils;
 import kh.com.finding.utils.JsonResponses;
 import kh.com.finding.validations.UserValidator;
@@ -34,6 +35,8 @@ public class FindingController {
 	@Autowired
 	UserValidator userValidator;
 	
+	@Autowired
+	private UserServiceImpl userServiceImpl;
 	
 	@RequestMapping(value = {"/{locale:en|kh}","/"}, method = RequestMethod.GET)
 	public String loadingHome(){
@@ -52,13 +55,13 @@ public class FindingController {
 	
 	@RequestMapping(value = "/{locale:en|kh}/register", method = RequestMethod.POST)
 	public @ResponseBody JsonResponses registerUser(@Valid @ModelAttribute EntityUser entityUser ,  HttpServletRequest request,BindingResult result){	  
-
+		System.out.println(LocaleContextHolder.getLocaleContext().getLocale());
 		userValidator.validate(entityUser, result);	
 		
-		if ( !iCaptchaService.processResponse(request.getParameter("g-recaptcha-response"),result) ){
-			ObjectError error = new ObjectError("g-recaptcha-response",new String[]{"g-recaptcha-response"},null, messageSource.getMessage("msg.reg.captchaError"   , null ,LocaleContextHolder.getLocale()));
+		/*if ( !iCaptchaService.processResponse(request.getParameter("g-recaptcha-response"),result) ){
+			ObjectError error = new ObjectError("g-recaptcha-response",new String[]{"g-recaptcha-response"},null, messageSource.getMessage(ConstsUtils.NOTEMPTY_CAPTCHA  , null ,LocaleContextHolder.getLocale()));
 			result.addError(error);
-		}
+		}*/
 		
 		JsonResponses json = new JsonResponses();	
 		
@@ -67,8 +70,7 @@ public class FindingController {
 			json.setResutl(result.getAllErrors());
 			
 		}else{
-			json.setStatus(ConstsUtils.DEFAULT_SUCCESS_STATUS);
-			json.setResutl("success");
+			json = userServiceImpl.registerUserInfo(entityUser);
 		}
 		
 		return json;

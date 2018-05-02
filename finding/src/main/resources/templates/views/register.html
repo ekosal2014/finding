@@ -18,7 +18,7 @@
 <label th:utext="#{label.password}">Password</label>
 <input type="password" name="password"><br>
 <label th:utext="#{label.password}">Comfirm PassWrod</label>
-<input type="password" name="comfirmpasswor">
+<input type="password" name="confirm_password">
  <div class="g-recaptcha col-sm-5"
           th:attr="data-sitekey=6LeTp1UUAAAAAPYJjseRXl_YCurNDWEd_TdzoHcD"></div>
         <span id="captchaError" class="alert alert-danger col-sm-4"
@@ -48,6 +48,7 @@
 			            url: frm.attr('action'),
 			            data : data,
 			            success : function(json){
+			            	console.log(json);
 			            	if (json['status'] == '9999'){
 			            		for(var i=0; i<json['result'].length;i++){
 						            

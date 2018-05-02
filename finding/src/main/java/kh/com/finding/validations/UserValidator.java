@@ -43,14 +43,6 @@ public class UserValidator implements Validator{
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password"    , ConstsUtils.NOTEMPTY_PASSWORD    ,messageSource.getMessage(ConstsUtils.NOTEMPTY_PASSWORD    , null ,LocaleContextHolder.getLocale()));
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "confirm_password"    , ConstsUtils.NOTEMPTY_CONFIRM_PASSWORD    ,messageSource.getMessage(ConstsUtils.NOTEMPTY_CONFIRM_PASSWORD    , null ,LocaleContextHolder.getLocale()));
 		
-	
-		if ( !errors.hasErrors() ){
-			if ( !user.getPassword().equals(user.getConfirm_password()) ){
-				errors.rejectValue( "confirm_password"   , ConstsUtils.NOTMATCH_CONFIRM_PASSWORD   ,messageSource.getMessage(ConstsUtils.NOTMATCH_CONFIRM_PASSWORD , null ,LocaleContextHolder.getLocale()));
-			}
-		}
-		
-		
 		if (!errors.hasFieldErrors("user_name")){
 			EntityUser entityUser = userMapper.loadingByUserName(user.getUser_name());
 			if ( entityUser != null ){
@@ -70,6 +62,11 @@ public class UserValidator implements Validator{
 			
 		}
 		
+		if ( !errors.hasErrors() ){
+			if ( !user.getPassword().equals(user.getConfirm_password()) ){
+				errors.rejectValue( "confirm_password"   , ConstsUtils.NOTMATCH_CONFIRM_PASSWORD   ,messageSource.getMessage(ConstsUtils.NOTMATCH_CONFIRM_PASSWORD , null ,LocaleContextHolder.getLocale()));
+			}
+		}
 		
 		
 	

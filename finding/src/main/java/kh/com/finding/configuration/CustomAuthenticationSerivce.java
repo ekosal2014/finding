@@ -25,7 +25,6 @@ public class CustomAuthenticationSerivce implements UserDetailsService{
 		// TODO Auto-generated method stub
 		
 		EntityUser entityUser = userMapper.loadingByUserName(username);
-		
 		if ( entityUser == null ){
 			
 			throw new UsernameNotFoundException("User Name Not match!!");
@@ -33,7 +32,7 @@ public class CustomAuthenticationSerivce implements UserDetailsService{
 		}
 		
 		entityUser.setAuthorities(userMapper.loadingAuthoritiesByName(username));		
-		entityUser.setServies(serviceMappers.loadingServiceByUserName(username));
+		//entityUser.setServies(serviceMappers.loadingServiceByUserName(username));
 		
 		
 		

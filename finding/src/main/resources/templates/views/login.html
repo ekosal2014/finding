@@ -7,7 +7,7 @@
 </head>
 <body>
  lkasdjf
- <form action="/finding" method="post">
+ <form th:action="@{/{url}/login(url=${session.URL_LOCATION_DEFAULT})}" method="post">
  <span th:utext="#{label.userName}"></span><input type="text" name="username">
  <span th:utext="#{label.password}"></span><input type="password" name="password">
 <a th:href="@{/kh/{url}(url=${session.URL_CHANGE_LEANGUAGE})}">khmer</a>

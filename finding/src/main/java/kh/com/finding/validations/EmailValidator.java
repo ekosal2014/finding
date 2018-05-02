@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 public class EmailValidator {
 	
 	private static EmailValidator instance = null;
-	private Pattern pattern = Pattern.compile("^([a-zA-Z0-9\\-\\.\\_]+)'+'(\\@)([a-zA-Z0-9\\-\\.]+)'+'(\\.)([a-zA-Z]{2,4})$");
+	private Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
 	
 	public static EmailValidator Instance(){
 		

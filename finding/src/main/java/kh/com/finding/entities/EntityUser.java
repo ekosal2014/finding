@@ -177,7 +177,9 @@ public class EntityUser implements UserDetails {
 		return "Full Name = " + this.full_name + "\n" + 
 			   "Email     = " + this.email     + "\n" +
 		       "User Name = " + this.user_name + "\n" +
-			   "Password  = " + this.password  + "\n" ;
+			   "Password  = " + this.password  + "\n" +
+		       "reg_dt    = " + this.getReg_dt() + "\n" +
+			   "sts       = " + this.sts       + "\n" ;
 	}
 
 	
