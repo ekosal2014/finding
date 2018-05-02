@@ -3,17 +3,54 @@
 <head>
  <meta charset="UTF-8">
 <title>Insert title here</title>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
  lkasdjf
- <form th:action="@{/{url}/login(url=${session.URL_LOCATION_DEFAULT})}" method="post">
+ <form th:action="@{/{url}/login(url=${session.URL_LOCATION_DEFAULT})}" th:method="POST" id="frm-login">
  <span th:utext="#{label.userName}"></span><input type="text" name="username">
  <span th:utext="#{label.password}"></span><input type="password" name="password">
 <a th:href="@{/kh/{url}(url=${session.URL_CHANGE_LEANGUAGE})}">khmer</a>
 <a th:href="@{/en/{url}(url=${session.URL_CHANGE_LEANGUAGE})}">english</a>
  
-<input type="submit" value="submit">
+<a href="javascript:" class="btn_login" id="btnLogin">register</a>
 </form>
+
+
+	<script>
+		$(document).ready(function(){
+			$('#btnLogin').click(function(){
+				$('#frm-login').submit();
+			});
+			$('#frm-login').submit(function(e) {
+				var frm = $('#frm-login');
+				e.preventDefault();
+				var data = {};
+
+				$.each(this,function(i,v){
+					var input = $(v);
+					data[input.attr("name")] = input.val();
+					delete(data["undefined"])
+				});
+				console.log(data);
+				 $.ajax({
+			            type: frm.attr('method'),
+			            url: frm.attr('action'),
+			            data : data,
+			            success : function(json){
+			            	console.log(json);
+			            	
+			            	}
+          	
+			            },
+			            error : function(data){
+			             
+			            }
+			        });
+		        
+			});
+		});
+	</script>
+
 </body>
 </html>

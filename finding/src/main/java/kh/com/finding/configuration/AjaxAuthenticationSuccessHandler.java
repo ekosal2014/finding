@@ -10,6 +10,11 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import kh.com.finding.utils.ConstsUtils;
+import kh.com.finding.utils.JsonResponses;
+
 @Component("ajaxAuthenticationSuccessHandler")
 public class AjaxAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
@@ -17,7 +22,19 @@ public class AjaxAuthenticationSuccessHandler implements AuthenticationSuccessHa
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
 			Authentication authentication) throws IOException, ServletException {
 		// TODO Auto-generated method stub
+		//String targetUrl = determineTargetUrl(authentication);
+		//System.out.println("User has been logged in successfully and redirect to " + targetUrl);
+		/*if(response.isCommitted()){
+			System.out.println("Response has already been committed. Unable to redirect to " + targetUrl);
+			return;
+		}
+		*/
 		
+		ObjectMapper mapper = new ObjectMapper();		
+		JsonResponses msg = new JsonResponses(ConstsUtils.DEFAULT_SUCCESS_STATUS,request.getParameter("redictUrl"));
+		String str = mapper.writeValueAsString(msg);
+	    response.getWriter().print(str);
+	    response.getWriter().flush();
 	}
 
 }
