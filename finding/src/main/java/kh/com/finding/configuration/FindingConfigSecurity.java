@@ -1,10 +1,8 @@
 package kh.com.finding.configuration;
 
-import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -25,11 +23,6 @@ public class FindingConfigSecurity extends WebSecurityConfigurerAdapter {
 	@Autowired 
 	private CustomAccessDeniedHandler customAccessDeniedHandler;
  
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		// TODO Auto-generated method stub
-		auth.authenticationProvider(this.customAuthenticationProvider);
-	}
 	
 	
 
@@ -37,10 +30,17 @@ public class FindingConfigSecurity extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		// TODO Auto-generated method stub
 		http.authorizeRequests()
-			.antMatchers("/**","/en/**","/kh/**").permitAll()
+			.antMatchers("/"
+					    ,"/{locale:en|kh}/"
+					    ,"/kh/login"
+					    ,"/{locale:en|kh}/register"
+					    ,"/{locale:en|kh}/services/**")
+						.permitAll()
+			.antMatchers("/{locale:en|kh}/user-info/**").hasAnyRole("USER","ADMIN")
+			.antMatchers("/{locale:en|kh}/admin-info/**").hasAnyRole("ADMIN")
 			.and()
 			.formLogin()
-				.loginPage("/{locale:en|kh}/login")
+				.loginPage("/kh/login")
 				.usernameParameter("username")
 				.passwordParameter("password")
 				//.failureUrl("/login?error")
@@ -57,6 +57,13 @@ public class FindingConfigSecurity extends WebSecurityConfigurerAdapter {
 			.exceptionHandling().accessDeniedHandler(customAccessDeniedHandler);
 	}
 
+
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		// TODO Auto-generated method stub
+		auth.authenticationProvider(this.customAuthenticationProvider);
+	}
+	
 	@Bean
 	public PasswordEncoder passwordEncoder(){
 		return new BCryptPasswordEncoder();

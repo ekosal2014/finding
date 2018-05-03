@@ -10,6 +10,7 @@
  <form th:action="@{/{url}/login(url=${session.URL_LOCATION_DEFAULT})}" th:method="POST" id="frm-login">
  <span th:utext="#{label.userName}"></span><input type="text" name="username">
  <span th:utext="#{label.password}"></span><input type="password" name="password">
+ <span ></span><input type="hidden" name="redictUrl" th:value="@{{redict}(redict=${session.URL_REDICT_CHANGE})}">
 <a th:href="@{/kh/{url}(url=${session.URL_CHANGE_LEANGUAGE})}">khmer</a>
 <a th:href="@{/en/{url}(url=${session.URL_CHANGE_LEANGUAGE})}">english</a>
  
@@ -39,6 +40,10 @@
 			            data : data,
 			            success : function(json){
 			            	console.log(json);
+			            	var result = $.parseJSON(json);
+			            	if ( result['status'] == '0000'){
+			            		///window.location.href =  result['result'];
+			            	}
 			            },
 			            error : function(data){
 			             	console.log(data);

@@ -43,6 +43,11 @@ public class FindingController {
 		return "index";		
 	}
 	
+	@RequestMapping(value = "/{locale:en|kh}/accessDenied", method = RequestMethod.GET)
+	public String loadingAccessDenied(){	  
+		return "login";
+	}
+	
 	@RequestMapping(value = "/{locale:en|kh}/login", method = RequestMethod.GET)
 	public String loadingLogin(){	  
 		return "login";
@@ -77,4 +82,8 @@ public class FindingController {
 	}
 	
 	
+	@RequestMapping(value = "/{locale:en|kh}/service.html", method = RequestMethod.GET)
+	public String loadingServiceSearch(){	  
+		return "service_search";
+	}
 }

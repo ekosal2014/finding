@@ -1,4 +1,4 @@
-package kh.com.finding.configuration;
+/*package kh.com.finding.configuration;
 
 import java.util.List;
 
@@ -160,3 +160,4 @@ public class WebMvcConfig implements WebMvcConfigurer {
 	}
 
 }
+*/

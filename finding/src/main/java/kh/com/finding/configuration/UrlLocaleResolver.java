@@ -5,14 +5,16 @@ import java.util.Locale;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.LocaleResolver;
+
+import kh.com.finding.utils.StringUtils;
 
 public class UrlLocaleResolver implements LocaleResolver{
 
-	private  static final String URL_LOCALE_ATTRIBUTE_NAME  = "URL_LOCALE_ATTRIBUTE_NAME";
-	private  static final String URL_LOCATION_DEFAULT       = "URL_LOCATION_DEFAULT";
-	private  static final String URL_CHANGE_LEANGUAGE       = "URL_CHANGE_LEANGUAGE";
+	public  static final String URL_LOCALE_ATTRIBUTE_NAME  = "URL_LOCALE_ATTRIBUTE_NAME";
+	public  static final String URL_LOCATION_DEFAULT       = "URL_LOCATION_DEFAULT";
+	public  static final String URL_CHANGE_LEANGUAGE       = "URL_CHANGE_LEANGUAGE";
+	public  static final String URL_REDICT_CHANGE          = "URL_REDICT_CHANGE"   ;
 	
 	@Override
 	public Locale resolveLocale(HttpServletRequest request) {
@@ -62,8 +64,11 @@ public class UrlLocaleResolver implements LocaleResolver{
 			urlChange = uri.substring(defaulturl.length() + 4, uri.length() );
 			
 		}
-		
-       
+
+		if (!StringUtils.nullToSetting(request.getParameter("redictUrl"), "").equals("")){
+			request.getSession().setAttribute(URL_REDICT_CHANGE, request.getParameter("redictUrl").toString());
+		}
+
 		request.getSession().setAttribute(URL_LOCATION_DEFAULT, locale.getLanguage());
 		request.getSession().setAttribute(URL_CHANGE_LEANGUAGE, urlChange);
 		
