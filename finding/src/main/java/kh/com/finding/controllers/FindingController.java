@@ -49,7 +49,8 @@ public class FindingController {
 	}
 	
 	@RequestMapping(value = "/{locale:en|kh}/login", method = RequestMethod.GET)
-	public String loadingLogin(){	  
+	public String loadingLogin(){	
+		
 		return "login";
 	}
 	

@@ -9,6 +9,8 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.util.AntPathMatcher;
 
 @Configuration
 public class FindingConfigSecurity extends WebSecurityConfigurerAdapter {
@@ -22,6 +24,8 @@ public class FindingConfigSecurity extends WebSecurityConfigurerAdapter {
 	private AjaxAuthenticationSuccessHandler ajaxAuthenticationSuccessHandler;
 	@Autowired 
 	private CustomAccessDeniedHandler customAccessDeniedHandler;
+	@Autowired 
+	private LogoutSuccessHandlers logoutSuccessHandlers;
  
 	
 	
@@ -50,7 +54,9 @@ public class FindingConfigSecurity extends WebSecurityConfigurerAdapter {
 				//.failureForwardUrl("/login")
 				.permitAll()
 			.and()
-				.logout()
+			.logout()
+				.logoutRequestMatcher(new AntPathRequestMatcher("/{locale:en|kh}/logout"))
+				.logoutSuccessHandler(logoutSuccessHandlers)
 				.permitAll()
 			.and()
 			//.exceptionHandling().accessDeniedPage("/error/403");

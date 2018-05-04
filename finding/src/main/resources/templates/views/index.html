@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org">
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
@@ -7,9 +8,20 @@
 <body>
 	kladfjalkdsjfalk
 	<a th:href="@{/{url}/login?redictUrl={redict}(url=${session.URL_LOCATION_DEFAULT},redict=${session.URL_CHANGE_LEANGUAGE})}">Login</a>
+	<a th:href="@{/{url}/logout(url=${session.URL_LOCATION_DEFAULT})}">logout</a>
 	<a th:href="@{/kh/{url}(url=${session.URL_CHANGE_LEANGUAGE})}">khmer</a>
 	<a th:href="@{/en/{url}(url=${session.URL_CHANGE_LEANGUAGE})}">english</a>
 	<a th:href="@{/{url}/register(url=${session.URL_LOCATION_DEFAULT})}">Register</a>
 	<a th:href="@{/{url}/service.html(url=${session.URL_LOCATION_DEFAULT})}">services</a>
+	<div sec:authorize="isAuthenticated()">
+	  This content is only shown to authenticated users.
+	</div>
+	<div sec:authorize="hasRole('ROLE_ADMIN')">
+	  This content is only shown to administrators.
+	</div>
+	<div sec:authorize="hasRole('ROLE_USER')">
+	  This content is only shown to users.
+	</div>
+	
 </body> 
 </html>
