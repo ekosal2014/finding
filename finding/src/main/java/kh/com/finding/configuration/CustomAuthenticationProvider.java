@@ -13,6 +13,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import kh.com.finding.utils.CustomRuntimeExcptionUtil;
+
 
 @Component
 public class CustomAuthenticationProvider implements AuthenticationProvider{
@@ -38,7 +40,9 @@ public class CustomAuthenticationProvider implements AuthenticationProvider{
 			
 		}
 		
-		System.out.println("status ==== " + entityuser.isEnabled());
+		if ( !entityuser.isEnabled() ) {
+			throw new UsernameNotFoundException("User is disabled.");
+		}
 		
 		Collection< ? extends GrantedAuthority> authorties = entityuser.getAuthorities();
 		

@@ -34,7 +34,7 @@ public class CustomAuthenticationSerivce implements UserDetailsService{
 		
 		entityUser.setAuthorities(userMapper.loadingAuthoritiesByName(username));		
 		entityUser.setServies(serviceMappers.loadingServiceByUserName(username));
-		//System.out.println(entityUser.toString());
+		System.out.println(entityUser.isEnabled());
 		return entityUser;
 	}
 
