@@ -21,7 +21,7 @@
 	</div>
 	<div sec:authorize="hasRole('ROLE_USER')">
 	  This content is only shown to users.
-	  <span sec:authentication="principal.email"></span>
+	  <span sec:authentication="principal.password"></span>
 	</div>
 	
 </body> 
