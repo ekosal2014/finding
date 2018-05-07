@@ -1,5 +1,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kh.com.finding.mappers.ServiceMappers">
 
+	<select id="loadingServiceByUserName" parameterType="java.lang.String" resultType="kh.com.finding.entities.EntityService">
+	
+		SELECT 
+			  s.service_cd
+		    , u.user_cd
+		    , s.title
+		    , s.service
+		    , s.logo
+		FROM user_services s,user_info u
+		WHERE u.user_cd = s.user_cd
+		  AND u.user_name = #{username}
+	
+	</select>
+
 </mapper>
 		

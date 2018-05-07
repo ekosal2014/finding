@@ -38,8 +38,10 @@ public class CustomAuthenticationProvider implements AuthenticationProvider{
 			
 		}
 		
+		System.out.println("status ==== " + entityuser.isEnabled());
+		
 		Collection< ? extends GrantedAuthority> authorties = entityuser.getAuthorities();
-		System.out.println(authorties.toString());
+		
 		return new UsernamePasswordAuthenticationToken(entityuser, entityuser.getPassword(), authorties);
 		
 	}

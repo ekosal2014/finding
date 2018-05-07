@@ -4,8 +4,8 @@ import java.util.List;
 
 public class EntityService {
 
-	private String service_cd ;	
-	private String user_cd    ;
+	private int    service_cd ;	
+	private int    user_cd    ;
 	private String phone_nm   ;
 	private String address	  ;
 	private String logo       ;
@@ -24,16 +24,16 @@ public class EntityService {
 	
 	
 	
-	public String getService_cd() {
+	public int getService_cd() {
 		return service_cd;
 	}
-	public void setService_cd(String service_cd) {
+	public void setService_cd(int service_cd) {
 		this.service_cd = service_cd;
 	}
-	public String getUser_cd() {
+	public int getUser_cd() {
 		return user_cd;
 	}
-	public void setUser_cd(String user_cd) {
+	public void setUser_cd(int user_cd) {
 		this.user_cd = user_cd;
 	}
 	public String getPhone_nm() {
