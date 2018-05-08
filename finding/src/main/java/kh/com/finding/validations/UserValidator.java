@@ -31,6 +31,10 @@ public class UserValidator implements Validator{
 		return EntityUser.class.isAssignableFrom(clazz);
 	}
 
+	public static void validationLogin(String username, String password, Errors errors ){
+		
+	}
+	
 	@Override
 	public void validate(Object target, Errors errors) {
 		// TODO Auto-generated method stub

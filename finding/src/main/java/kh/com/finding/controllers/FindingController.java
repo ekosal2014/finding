@@ -1,11 +1,17 @@
 package kh.com.finding.controllers;
 
+import static org.mockito.Matchers.anyBoolean;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import org.apache.catalina.authenticator.SpnegoAuthenticator.AuthenticateAction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
@@ -51,6 +57,11 @@ public class FindingController {
 	@RequestMapping(value = "/{locale:en|kh}/login", method = RequestMethod.GET)
 	public String loadingLogin(){	
 		
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		
+		if ( !authentication.getPrincipal().equals("anonymousUser") ){
+			return "redirect:/";
+		}
 		return "login";
 	}
 	

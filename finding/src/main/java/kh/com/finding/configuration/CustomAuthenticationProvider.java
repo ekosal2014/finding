@@ -13,6 +13,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import kh.com.finding.entities.EntityUser;
+import kh.com.finding.utils.ConstsUtils;
 import kh.com.finding.utils.CustomRuntimeExcptionUtil;
 
 
@@ -32,7 +34,15 @@ public class CustomAuthenticationProvider implements AuthenticationProvider{
 		String username = (String) authentication.getName();
 		String password = (String) authentication.getCredentials();
 		
-		UserDetails entityuser =  this.customAuthenticationSerivce.loadUserByUsername(username);
+		if ( username.equals("") || username.length() == 0){
+			throw new UsernameNotFoundException("Please input username!");
+		}
+		
+		if ( password.equals("") || password.length() == 0){
+			throw new UsernameNotFoundException("Please input password!");
+		}
+		
+		EntityUser entityuser =  (EntityUser) this.customAuthenticationSerivce.loadUserByUsername(username);
 		
 		if ( !passwordEncoder.matches(password, entityuser.getPassword())){
 			
@@ -44,8 +54,8 @@ public class CustomAuthenticationProvider implements AuthenticationProvider{
 			throw new UsernameNotFoundException("User is disabled.");
 		}
 		
-		
-		
+		entityuser.setPassword("");
+
 		Collection< ? extends GrantedAuthority> authorties = entityuser.getAuthorities();		
 		return new UsernamePasswordAuthenticationToken(entityuser, entityuser.getPassword(), authorties);
 		

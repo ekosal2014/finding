@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import kh.com.finding.entities.EntityUser;
 import kh.com.finding.utils.ConstsUtils;
 import kh.com.finding.utils.JsonResponses;
 import kh.com.finding.utils.StringUtils;
@@ -34,6 +35,11 @@ public class AjaxAuthenticationSuccessHandler implements AuthenticationSuccessHa
 			return;
 		}
 		*/
+		
+		
+		EntityUser entityUser = (EntityUser) authentication.getPrincipal();
+		System.out.println( entityUser.toString());
+		request.getSession().setAttribute("ENTITY_USER", entityUser);
 		
 		ObjectMapper mapper = new ObjectMapper();		
 		JsonResponses msg = new JsonResponses(ConstsUtils.DEFAULT_SUCCESS_STATUS, StringUtils.nullToSetting(request.getParameter("redictUrl"),""));

@@ -7,7 +7,7 @@ public class CustomRuntimeExcptionUtil extends RuntimeException{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private String code; 
+	private String status; 
 	private String msg ;
 	
 	
@@ -15,21 +15,23 @@ public class CustomRuntimeExcptionUtil extends RuntimeException{
 		super(msg);
 	}
 
-	public CustomRuntimeExcptionUtil(String code,String msg){
-		this.code = code;
-		this.msg  = msg ; 
+	public CustomRuntimeExcptionUtil(String status,String msg){
+		this.status = status;
+		this.msg    = msg ; 
 	}
 
-	public CustomRuntimeExcptionUtil(String code,  Exception e){
-		super(code,e);
+	public CustomRuntimeExcptionUtil(String status,  Exception e){
+		super(status,e);
 	}
 	
-	public String getCode() {
-		return code;
+	public String getStatus() {
+		return this.status;
 	}
 
 	public String getMsg() {
-		return msg;
+		return this.msg;
 	}
+
+	
 
 }

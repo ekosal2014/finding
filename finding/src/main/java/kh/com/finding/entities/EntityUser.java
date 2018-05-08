@@ -25,7 +25,7 @@ public class EntityUser implements UserDetails {
 	private String sts     ;
 	private String image   ;
 	private List<EntityRole> authorities;	
-	private List<EntityService> servies;
+	private List<EntityService> services;
 	
 
 	public int getUser_cd() {
@@ -118,13 +118,13 @@ public class EntityUser implements UserDetails {
 	}
 
 	
-	public List<EntityService> getServies() {
-		return servies;
+	public List<EntityService> getServices() {
+		return services;
 	}
 
 
-	public void setServies(List<EntityService> servies) {
-		this.servies = servies;
+	public void setServices(List<EntityService> services) {
+		this.services = services;
 	}
 
 
@@ -174,12 +174,14 @@ public class EntityUser implements UserDetails {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return "Full Name = " + this.full_name + "\n" + 
-			   "Email     = " + this.email     + "\n" +
-		       "User Name = " + this.user_name + "\n" +
-			   "Password  = " + this.password  + "\n" +
-		       "reg_dt    = " + this.getReg_dt() + "\n" +
-			   "sts       = " + this.sts       + "\n" ;
+		return "Full Name   = " + this.full_name + "\n" + 
+			   "Email       = " + this.email     + "\n" +
+		       "User Name   = " + this.user_name + "\n" +
+			   "Password    = " + this.password  + "\n" +
+		       "reg_dt      = " + this.reg_dt    + "\n" +
+			   "sts         = " + this.sts       + "\n" +
+		       "services    = " + this.services   + "\n" +
+			   "authorities = " + this.authorities;
 	}
 
 	

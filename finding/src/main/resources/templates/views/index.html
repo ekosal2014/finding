@@ -15,14 +15,27 @@
 	<a th:href="@{/{url}/service.html(url=${session.URL_LOCATION_DEFAULT})}">services</a>
 	<div sec:authorize="isAuthenticated()">
 	  This content is only shown to authenticated users.
+	 	  <div th:text="${session.ENTITY_USER.password}">
+			a;slkfa
+		 </div>
+		 <div th:if="${not #lists.isEmpty(session.ENTITY_USER.services)}">
+			a;slkfa
+		 </div > 
+		 <div th:if="${#lists.size(session.ENTITY_USER.services) < 3}">
+		 	Add New
+		 </div> 
 	</div>
-	<div sec:authorize="hasRole('ROLE_ADMIN')">
+<!-- 	<div sec:authorize="hasRole('ROLE_ADMIN')">
 	  This content is only shown to administrators.
-	</div>
-	<div sec:authorize="hasRole('ROLE_USER')">
+	</div> -->
+	<!-- <div sec:authorize="hasRole('ROLE_USER')">
 	  This content is only shown to users.
-	  <span sec:authentication="principal.password"></span>
-	</div>
+	  <span sec:authentication="principal.services"></span>
+	</div> -->
+	
+
+	
+	
 	
 </body> 
 </html>

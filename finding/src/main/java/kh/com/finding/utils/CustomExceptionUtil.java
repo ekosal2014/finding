@@ -7,7 +7,7 @@ public class CustomExceptionUtil extends Exception{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private String code;
+	private String status;
 	private String msg ;
 	
 	public CustomExceptionUtil(){
@@ -16,17 +16,17 @@ public class CustomExceptionUtil extends Exception{
 	public CustomExceptionUtil(String msg){
 		this.msg = msg;
 	}
-	public CustomExceptionUtil(String code, String msg){
+	public CustomExceptionUtil(String status, String msg){
 		super(msg);
-		this.code = code;
+		this.status = status;
 		this.msg  = msg ;
 	}
-	public CustomExceptionUtil(String code, Exception e){
-		super(code, e);
+	public CustomExceptionUtil(String status, Exception e){
+		super(status, e);
 	}
 	
-	public String getCode(){
-		return this.code; 
+	public String getstatus(){
+		return this.status; 
 	}
 	
 	public String getMsg(){
