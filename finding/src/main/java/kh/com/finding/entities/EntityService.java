@@ -122,7 +122,21 @@ public class EntityService {
 		this.news = news;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "  phone_nm    = " + this.phone_nm    + "\n" + 
+			   ", address     = " + this.address     + "\n" + 
+			   ", logo        = " + this.logo        + "\n" +  
+			   ", title       = " + this.title       + "\n" + 
+			   ", sub_title   = " + this.sub_title   + "\n" +  
+			   ", email       = " + this.email       + "\n" +  
+			   ", website     = " + this.website     + "\n" +  
+			   ", description = " + this.description + "\n" +  
+			   ", work_tm     = " + this.work_tm     + "\n" + 
+			   ", work_day    = " + this.work_day    + "\n" +  
+			   ", des_address = " + this.des_address + "\n" + 
+			   ", sts         = " + this.sts         ;
+	}
 	
 	
 }

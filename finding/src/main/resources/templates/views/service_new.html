@@ -3,6 +3,7 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
 	kladfjalkdsjfalk
@@ -10,6 +11,71 @@
 	<a th:href="@{/kh/{url}(url=${session.URL_CHANGE_LEANGUAGE})}">khmer</a>
 	<a th:href="@{/en/{url}(url=${session.URL_CHANGE_LEANGUAGE})}">english</a>
 	<a th:href="@{/{url}/register(url=${session.URL_LOCATION_DEFAULT})}">Register</a>
-	
+	<form th:action="@{/{url}/serverNew(url=${session.URL_LOCATION_DEFAULT})}" th:method="POST" id="frm-login">
+		
+		<label >Title</label>
+		<input type="text" name="title"><br>
+		<label >Sub Title</label>
+		<input type="text" name="sub_title"><br>
+		<label >Logo</label>
+		<input type="file" name="logo"><br>
+	    <label >Service</label>
+		<input type="text" name="service"><br>
+		
+		<label >Phone Number</label>
+		<input type="text" name="phone_nm"><br>
+		<label >E mail </label>
+		<input type="text" name="email"><br>		
+		<label >Address</label>
+		<input type="text" name="address"><br>
+		<label >Web Site</label>
+		<input type="text" name="website"><br>
+		<label >Work Time</label>
+		<input type="text" name="work_tm"><br>
+		<label >Work Day</label>
+		<input type="text" name="work_day"><br>		
+		<label >Description</label>
+		<input type="text" name="description"><br>
+		<a href="javascript:" class="btn_login" id="btnSave">Save</a>
+</form>
+	<script>
+		$(document).ready(function(){
+			$('#btnSave').click(function(){
+				$('#frm-login').submit();
+			});
+			$('#frm-login').submit(function(e) {
+				var frm = $('#frm-login');
+				e.preventDefault();
+				var data = {};
+
+				$.each(this,function(i,v){
+					var input = $(v);
+					data[input.attr("name")] = input.val();
+					delete(data["undefined"])
+				});
+				console.log(data);
+				$.ajax({
+			            type: frm.attr('method'),
+			            url: frm.attr('action'),
+			            data : data,
+			            success : function(json){
+			            	console.log(json);
+			            	if (json['status'] == '9999'){
+			            		for(var i=0; i<json['result'].length;i++){
+						            
+				            	}
+			            	}else{
+			            		
+			            	}
+          	
+			            },
+			            error : function(data){
+			             
+			            }
+			        }); 
+		        
+			});
+		});
+	</script>
 </body>
 </html>

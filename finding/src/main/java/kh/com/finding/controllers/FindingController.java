@@ -96,6 +96,6 @@ public class FindingController {
 	
 	@RequestMapping(value = "/{locale:en|kh}/service.html", method = RequestMethod.GET)
 	public String loadingServiceSearch(){	  
-		return "service_search";
+		return "service_new";
 	}
 }
