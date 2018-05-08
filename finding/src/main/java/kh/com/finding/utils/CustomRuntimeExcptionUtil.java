@@ -16,6 +16,7 @@ public class CustomRuntimeExcptionUtil extends RuntimeException{
 	}
 
 	public CustomRuntimeExcptionUtil(String status,String msg){
+		super();
 		this.status = status;
 		this.msg    = msg ; 
 	}

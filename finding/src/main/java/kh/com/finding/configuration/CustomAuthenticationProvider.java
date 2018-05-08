@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
 import kh.com.finding.entities.EntityUser;
 import kh.com.finding.utils.ConstsUtils;
 import kh.com.finding.utils.CustomRuntimeExcptionUtil;
+import kh.com.finding.validations.Validations;
 
 
 @Component
@@ -37,6 +38,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider{
 		if ( username.equals("") || username.length() == 0){
 			throw new UsernameNotFoundException("Please input username!");
 		}
+		
 		
 		if ( password.equals("") || password.length() == 0){
 			throw new UsernameNotFoundException("Please input password!");
