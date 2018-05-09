@@ -10,6 +10,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 @Configuration
 public class FindingConfigSecurity extends WebSecurityConfigurerAdapter {
@@ -81,5 +83,13 @@ public class FindingConfigSecurity extends WebSecurityConfigurerAdapter {
 		web.ignoring().antMatchers("/resources/**");
 		web.ignoring().antMatchers("/static/**");
 	}
+	
+	@Bean(name = "multipartResolver")
+    public MultipartResolver multipartResolver() {
+		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+        //multipartResolver.setMaxUploadSize(2097152);
+        multipartResolver.setMaxUploadSize(5242880);
+        return multipartResolver;
+    }
 	
 }

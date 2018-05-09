@@ -51,7 +51,8 @@ public class UrlLocaleResolver implements LocaleResolver{
 			
 			if ( locale == null ) {
 				
-				locale = new Locale("kh", "KH");
+				locale = Locale.ENGLISH;
+				//locale = new Locale("kh", "KH");
 				
 			}
 		}

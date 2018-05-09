@@ -2,6 +2,8 @@ package kh.com.finding.entities;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class EntityService {
 
 	private int    service_cd ;	
@@ -137,6 +139,7 @@ public class EntityService {
 			   ", des_address = " + this.des_address + "\n" + 
 			   ", sts         = " + this.sts         ;
 	}
+	
 	
 	
 }

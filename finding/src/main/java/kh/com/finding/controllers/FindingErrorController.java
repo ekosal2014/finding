@@ -31,7 +31,7 @@ public class FindingErrorController implements ErrorController{
 	@Override
 	public String getErrorPath() {
 		// TODO Auto-generated method stub
-		System.out.println("error hz");
+		//System.out.println("error hz");
 		return "/error";
 	}
 
