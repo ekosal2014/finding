@@ -20,7 +20,6 @@ public class EntityService {
 	private String work_day   ;
 	private String des_address;
 	private String sts        ;
-	
 	private List<EntityImage>  images ;
 	private List<EntityNews>   news   ;
 	

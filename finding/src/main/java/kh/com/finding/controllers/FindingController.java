@@ -18,7 +18,9 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import kh.com.finding.captcha.ICaptchaService;
 import kh.com.finding.entities.EntityUser;
@@ -47,6 +49,15 @@ public class FindingController {
 	@RequestMapping(value = {"/{locale:en|kh}","/"}, method = RequestMethod.GET)
 	public String loadingHome(){
 		return "index";		
+	}
+	
+	@RequestMapping( value = "/", method = RequestMethod.POST)
+	public String loadingServiceInfo(@RequestParam("file") MultipartFile file) 
+	{
+		System.out.println("dldgk" + file);
+		//System.out.println(file);
+		//MultipartFile img = request.getParameter("file");
+		return "";
 	}
 	
 	@RequestMapping(value = "/{locale:en|kh}/accessDenied", method = RequestMethod.GET)

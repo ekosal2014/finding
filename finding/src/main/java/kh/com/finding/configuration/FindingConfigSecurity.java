@@ -41,7 +41,7 @@ public class FindingConfigSecurity extends WebSecurityConfigurerAdapter {
 					    ,"/{locale:en|kh}/register"
 					    ,"/{locale:en|kh}/services/**")
 						.permitAll()
-			.antMatchers("/{locale:en|kh}/user-info/**").hasAnyRole("USER","ADMIN")
+			.antMatchers("/{locale:en|kh}/userinfo/**").hasAnyRole("USER","ADMIN")
 			.antMatchers("/{locale:en|kh}/admin-info/**").hasAnyRole("ADMIN")
 			.anyRequest().authenticated()
 			.and()
@@ -84,12 +84,12 @@ public class FindingConfigSecurity extends WebSecurityConfigurerAdapter {
 		web.ignoring().antMatchers("/static/**");
 	}
 	
-	@Bean(name = "multipartResolver")
+	/*@Bean(name = "multipartResolver")
     public MultipartResolver multipartResolver() {
 		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
         //multipartResolver.setMaxUploadSize(2097152);
         multipartResolver.setMaxUploadSize(5242880);
         return multipartResolver;
-    }
+    }*/
 	
 }
