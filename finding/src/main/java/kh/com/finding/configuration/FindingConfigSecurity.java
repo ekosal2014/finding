@@ -41,8 +41,8 @@ public class FindingConfigSecurity extends WebSecurityConfigurerAdapter {
 					    ,"/{locale:en|kh}/register"
 					    ,"/{locale:en|kh}/services/**")
 						.permitAll()
-			.antMatchers("/{locale:en|kh}/userinfo/**").hasAnyRole("USER","ADMIN")
-			.antMatchers("/{locale:en|kh}/admin-info/**").hasAnyRole("ADMIN")
+			.antMatchers("/{locale:en|kh}/userinfo/**").hasAnyRole("ROLE_USER","ROLE_ADMIN")
+			.antMatchers("/{locale:en|kh}/admin-info/**").hasAnyRole("ROLE_ADMIN")
 			.anyRequest().authenticated()
 			.and()
 			.formLogin()

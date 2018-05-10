@@ -52,12 +52,12 @@ public class FindingController {
 	}
 	
 	@RequestMapping( value = "/", method = RequestMethod.POST)
-	public String loadingServiceInfo(@RequestParam("file") MultipartFile file) 
+	public String loadingServiceInfo() 
 	{
-		System.out.println("dldgk" + file);
+		//System.out.println("dldgk" + file);
 		//System.out.println(file);
 		//MultipartFile img = request.getParameter("file");
-		return "";
+		return "index";
 	}
 	
 	@RequestMapping(value = "/{locale:en|kh}/accessDenied", method = RequestMethod.GET)

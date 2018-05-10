@@ -4,10 +4,10 @@ public class StringUtils {
 
 	public static String nullToSetting(Object obj, String param){
 		
-		String defaultString = param;		
+		String defaultString = "";		
 		
-		if (String.valueOf(obj).equals("null") || obj == null ){
-			return defaultString;
+		if (String.valueOf(obj).equals("null") || String.valueOf(obj) == "" || String.valueOf(obj).length() == 0 ){
+			return defaultString = param;
 		}else{
 			defaultString = (String)obj;
 		}
