@@ -5,6 +5,7 @@ import java.util.Locale;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.web.servlet.LocaleResolver;
 
 import kh.com.finding.utils.StringUtils;
@@ -15,7 +16,7 @@ public class UrlLocaleResolver implements LocaleResolver{
 	public  static final String URL_LOCATION_DEFAULT       = "URL_LOCATION_DEFAULT";
 	public  static final String URL_CHANGE_LEANGUAGE       = "URL_CHANGE_LEANGUAGE";
 	public  static final String URL_REDICT_CHANGE          = "URL_REDICT_CHANGE"   ;
-	
+	public  static String language = "kh";
 	@Override
 	public Locale resolveLocale(HttpServletRequest request) {
 		// TODO Auto-generated method stub
@@ -70,7 +71,8 @@ public class UrlLocaleResolver implements LocaleResolver{
 			request.getSession().setAttribute(URL_REDICT_CHANGE, request.getParameter("redictUrl").toString());
 		}
 
-		request.getSession().setAttribute(URL_LOCATION_DEFAULT, locale.getLanguage());
+		language = locale.getLanguage();
+		request.getSession().setAttribute(URL_LOCATION_DEFAULT, language);
 		request.getSession().setAttribute(URL_CHANGE_LEANGUAGE, urlChange);
 		
 		return locale;
@@ -82,5 +84,7 @@ public class UrlLocaleResolver implements LocaleResolver{
 		// TODO Auto-generated method stub
 		
 	}
+	
+
 
 }

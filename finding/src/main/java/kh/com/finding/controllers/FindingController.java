@@ -51,15 +51,6 @@ public class FindingController {
 		return "index";		
 	}
 	
-	@RequestMapping( value = "/", method = RequestMethod.POST)
-	public String loadingServiceInfo() 
-	{
-		//System.out.println("dldgk" + file);
-		//System.out.println(file);
-		//MultipartFile img = request.getParameter("file");
-		return "index";
-	}
-	
 	@RequestMapping(value = "/{locale:en|kh}/accessDenied", method = RequestMethod.GET)
 	public String loadingAccessDenied(){	  
 		return "login";
@@ -73,9 +64,10 @@ public class FindingController {
 		if ( !authentication.getPrincipal().equals("anonymousUser") ){
 			return "redirect:/";
 		}
+		
 		return "login";
 	}
-	
+
 	@RequestMapping(value = "/{locale:en|kh}/register", method = RequestMethod.GET)
 	public String loadingRegister(){	  
 		return "register";
@@ -105,7 +97,7 @@ public class FindingController {
 	}
 	
 	
-	@RequestMapping(value = "/{locale:en|kh}/service.html", method = RequestMethod.GET)
+	@RequestMapping(value = "/{locale:en|kh}/services", method = RequestMethod.GET)
 	public String loadingServiceSearch(){	  
 		return "service_new";
 	}

@@ -35,18 +35,19 @@ public class FindingConfigSecurity extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		// TODO Auto-generated method stub
 		http.authorizeRequests()
-			.antMatchers("/"
-					    ,"/{locale:en|kh}/"
-					    ,"/kh/login"
-					    ,"/{locale:en|kh}/register"
-					    ,"/{locale:en|kh}/services/**")
-						.permitAll()
-			.antMatchers("/{locale:en|kh}/userinfo/**").hasAnyRole("ROLE_USER","ROLE_ADMIN")
-			.antMatchers("/{locale:en|kh}/admin-info/**").hasAnyRole("ROLE_ADMIN")
-			.anyRequest().authenticated()
-			.and()
+				.antMatchers("/"
+						    ,"/{locale:en|kh}/"
+						    ,"/login"
+						    ,"/{locale:en|kh}/login"
+						    ,"/{locale:en|kh}/register"
+						    ,"/{locale:en|kh}/services/**")
+							.permitAll()
+				.antMatchers("/{locale:en|kh}/userinfo/**").hasAnyRole("ROLE_USER")
+				.antMatchers("/{locale:en|kh}/admin-info/**").hasAnyRole("ROLE_ADMIN")
+				.anyRequest().authenticated()
+				.and()
 			.formLogin()
-				.loginPage("/kh/login")
+				.loginPage("/login")
 				.usernameParameter("username")
 				.passwordParameter("password")
 				//.failureUrl("/login?error")
@@ -55,12 +56,12 @@ public class FindingConfigSecurity extends WebSecurityConfigurerAdapter {
 				.failureHandler(ajaxAuthenticationFailureHandler)
 				//.failureForwardUrl("/login")
 				.permitAll()
-			.and()
+				.and()
 			.logout()
 				.logoutRequestMatcher(new AntPathRequestMatcher("/{locale:en|kh}/logout"))
 				.logoutSuccessHandler(logoutSuccessHandlers)
 				.permitAll()
-			.and()
+				.and()
 			//.exceptionHandling().accessDeniedPage("/error/403");
 			.exceptionHandling().accessDeniedHandler(customAccessDeniedHandler);
 	}

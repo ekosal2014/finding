@@ -14,7 +14,7 @@
 	<a th:href="@{/kh/{url}(url=${session.URL_CHANGE_LEANGUAGE})}">khmer</a>
 	<a th:href="@{/en/{url}(url=${session.URL_CHANGE_LEANGUAGE})}">english</a>
 	<a th:href="@{/{url}/register(url=${session.URL_LOCATION_DEFAULT})}">Register</a>
-	<a th:href="@{/{url}/service.html(url=${session.URL_LOCATION_DEFAULT})}">services</a>
+	<a th:href="@{/{url}/services(url=${session.URL_LOCATION_DEFAULT})}">services</a>
 	<div sec:authorize="isAuthenticated()">
 	  This content is only shown to authenticated users.
 	 	  <div th:text="${session.ENTITY_USER.password}">
@@ -27,43 +27,21 @@
 		 	Add New
 		 </div> 
 	</div>
-<!-- 	<div sec:authorize="hasRole('ROLE_ADMIN')">
+ 	<div sec:authorize="hasRole('ADMIN')">
 	  This content is only shown to administrators.
-	</div> -->
-	<!-- <div sec:authorize="hasRole('ROLE_USER')">
+	</div> 
+	 <div sec:authorize="hasRole('USER')">
 	  This content is only shown to users.
 	  <span sec:authentication="principal.services"></span>
-	</div> -->
+	</div> 
 	
-	<form th:action="@{/}" th:method="POST" id="frm-login" enctype="multipart/form-data"> 
+	<form th:action="@{/{url}/userinfo/serviceNew(url=${session.URL_LOCATION_DEFAULT})}" th:method="POST" id="frm-login" enctype="multipart/form-data"> 
 		
-		<!-- <label >Title</label>
-		<input type="text" name="title"><br>
-		<label >Sub Title</label>
-		<input type="text" name="sub_title"><br> -->
-		<label >Logo</label>
-		<input type="file" name="file"><br>
-	  <!--   <label >Service</label>
-		<input type="text" name="service"><br>
 		
-		<label >Phone Number</label>
-		<input type="text" name="phone_nm"><br>
-		<label >E mail </label>
-		<input type="text" name="email"><br>		
-		<label >Address</label>
-		<input type="text" name="address"><br>
-		<label >Web Site</label>
-		<input type="text" name="website"><br>
-		<label >Work Time</label>
-		<input type="text" name="work_tm"><br>
-		<label >Work Day</label>
-		<input type="text" name="work_day"><br>		
 		<label >Description</label>
-		<input type="text" name="description"><br> -->
-		<!-- <a href="javascript:" class="btn_login" id="btnSave">Save</a> -->
+		<input type="text" name="description"><br> 
 		<input type="submit" value="Insert">
-</form>
-	
+	</form>
 	
 	
 </body> 

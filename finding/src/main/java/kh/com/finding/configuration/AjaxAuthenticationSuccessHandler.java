@@ -38,11 +38,11 @@ public class AjaxAuthenticationSuccessHandler implements AuthenticationSuccessHa
 		
 		
 		EntityUser entityUser = (EntityUser) authentication.getPrincipal();
-		System.out.println( "url = " + StringUtils.nullToSetting(request.getParameter("redictUrl"),"/"));
+		System.out.println( "url = " + StringUtils.nullToSetting(request.getParameter("redictUrl"),""));
 		request.getSession().setAttribute("ENTITY_USER", entityUser);
 		
 		ObjectMapper mapper = new ObjectMapper();		
-		JsonResponses msg = new JsonResponses(ConstsUtils.DEFAULT_SUCCESS_STATUS, StringUtils.nullToSetting(request.getParameter("redictUrl"),"/"));
+		JsonResponses msg = new JsonResponses(ConstsUtils.DEFAULT_SUCCESS_STATUS, StringUtils.nullToSetting(request.getParameter("redictUrl"),""));
 		String str = mapper.writeValueAsString(msg);
 	    response.getWriter().print(str);
 	    response.getWriter().flush();
