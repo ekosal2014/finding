@@ -9,7 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import kh.com.finding.abstracts.AbstractImage;
 
 
-public class EntityUser extends AbstractImage implements UserDetails {	
+public class EntityUser extends Images implements UserDetails {	
 	
 
 	/**
