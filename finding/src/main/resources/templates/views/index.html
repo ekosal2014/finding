@@ -39,14 +39,5 @@
 	  <span sec:authentication="principal.services"></span>
 	</div> 
 	
-	<form th:action="@{/{url}/serviceNew(url=${session.URL_LOCATION_DEFAULT})}" th:method="POST" id="frm-login" enctype="multipart/form-data"> 
-		
-		
-		<label >Description</label>
-		<input type="text" name="description"><br> 
-		<input type="submit" value="Insert">
-	</form>
-	
-	
 </body> 
 </html>

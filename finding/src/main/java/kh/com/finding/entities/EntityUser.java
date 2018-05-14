@@ -6,8 +6,10 @@ import java.util.List;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import kh.com.finding.abstracts.AbstractImage;
 
-public class EntityUser implements UserDetails {	
+
+public class EntityUser extends AbstractImage implements UserDetails {	
 	
 
 	/**
@@ -103,14 +105,14 @@ public class EntityUser implements UserDetails {
 	}
 
 
-	public String getImage() {
+	/*public String getImage() {
 		return image;
 	}
 
 
 	public void setImage(String image) {
 		this.image = image;
-	}
+	}*/
 
 
 	public void setAuthorities(List<EntityRole> authorities) {
@@ -183,6 +185,23 @@ public class EntityUser implements UserDetails {
 		       "services    = " + this.services   + "\n" +
 			   "authorities = " + this.authorities;
 	}
+
+
+	@Override
+	public String getImage() {
+		// TODO Auto-generated method stub
+		return this.image;
+	}
+
+
+	@Override
+	public void setImage(String image) {
+		// TODO Auto-generated method stub
+		this.image = image;
+	}
+
+
+
 
 	
 	

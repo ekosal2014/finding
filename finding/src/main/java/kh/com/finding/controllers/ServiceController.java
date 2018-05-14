@@ -14,5 +14,17 @@ import kh.com.finding.utils.JsonResponses;
 @Controller
 public class ServiceController {
 
+	@RequestMapping(value = "/{locale:en|kh}/userinfo/services", method = RequestMethod.GET)
+	public String loadingServiceSearch(){	  
+		return "userinfo/service_new";
+	}
+	
+	@RequestMapping( value = "/{locale:en|kh}/userinfo/serviceNew", method = RequestMethod.POST)
+	public @ResponseBody JsonResponses loadingServiceInfo(@ModelAttribute EntityService services,@RequestParam("file") MultipartFile file) 
+	{
+		System.out.println(services.toString());
+		System.out.println(file);
+		return new JsonResponses("");
+	}
 	
 }
