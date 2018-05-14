@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import kh.com.finding.captcha.ICaptchaService;
+import kh.com.finding.entities.EntityService;
 import kh.com.finding.entities.EntityUser;
 import kh.com.finding.services.UserServiceImpl;
 import kh.com.finding.utils.ConstsUtils;
@@ -56,7 +57,7 @@ public class FindingController {
 		return "login";
 	}
 	
-	@RequestMapping(value = "/{locale:en|kh}/login", method = RequestMethod.GET)
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String loadingLogin(){	
 		
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -97,8 +98,16 @@ public class FindingController {
 	}
 	
 	
-	@RequestMapping(value = "/{locale:en|kh}/services", method = RequestMethod.GET)
+	@RequestMapping(value = "/{locale:en|kh}/userinfo/services", method = RequestMethod.GET)
 	public String loadingServiceSearch(){	  
-		return "service_new";
+		return "userinfo/service_new";
+	}
+	
+	@RequestMapping( value = "/{locale:en|kh}/userinfo/serviceNew", method = RequestMethod.POST)
+	public @ResponseBody JsonResponses loadingServiceInfo(@ModelAttribute EntityService services,@RequestParam("file") MultipartFile file) 
+	{
+		System.out.println(services.toString());
+		System.out.println(file);
+		return new JsonResponses("");
 	}
 }

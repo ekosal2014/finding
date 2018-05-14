@@ -72,12 +72,12 @@ public class FindingConfiguration extends WebMvcConfigurerAdapter{
 		
 	}
 	
-	/*@Bean(name = "multipartResolver")
+	@Bean(name = "multipartResolver")
     public MultipartResolver multipartResolver() {
 		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
         //multipartResolver.setMaxUploadSize(2097152);
         multipartResolver.setMaxUploadSize(5242880);
         return multipartResolver;
-    }*/
+    }
 	
 }

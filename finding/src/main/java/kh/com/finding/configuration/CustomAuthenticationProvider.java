@@ -56,7 +56,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider{
 			throw new UsernameNotFoundException("User is disabled.");
 		}
 		
-		entityuser.setPassword("");
+		//entityuser.setPassword("");
 
 		Collection< ? extends GrantedAuthority> authorties = entityuser.getAuthorities();		
 		return new UsernamePasswordAuthenticationToken(entityuser, entityuser.getPassword(), authorties);

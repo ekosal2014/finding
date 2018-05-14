@@ -20,7 +20,7 @@
 		<label >Sub Title</label>
 		<input type="text" name="sub_title"><br> 
 		<label >Logo</label>
-		<input type="text" name="file"><br>
+		<input type="file" name="file" multiple><br>
 	    <label >Service</label>
 		<input type="text" name="service"><br>
 		
@@ -38,6 +38,9 @@
 		<input type="text" name="work_day"><br>		
 		<label >Description</label>
 		<input type="text" name="description"><br> 
+		<input type="hidden"
+		name="${_csrf.parameterName}"
+		value="${_csrf.token}"/>
 		<a href="javascript:" class="btn_login" id="btnSave">Save</a> 
 		<input type="submit" value="Insert">
 </form>
@@ -45,18 +48,18 @@
 		$(document).ready(function(){
 			$('#btnSave').click(function(e){
 				//$('#frm-login').submit();
-			 /*   var frm = $('#frm-login');
+			   var frm = $('#frm-login');
 				$("#frm-login").ajaxSubmit({
-					url:  '',
+					url :  frm.attr('action'),
 					type: 'POST',
 					success:function(data){
 						console.log(data);
 						//alert(data['msg'])
 					}
-				})    */
+				})    
 				
 			});
-			$('#frm-login').submit(function(e) {
+			 /* $('#frm-login').submit(function(e) {
 				var frm = $(this);
 				e.preventDefault();
 				var data = {};//new FormData($("#frm-login")[0]);
@@ -66,11 +69,13 @@
 					data[input.attr("name")] = input.val();
 					delete(data["undefined"])
 				});
-				console.log(frm.attr('action'));
+
+				console.log(frm);
+				
 				$.ajax({
 			            type : frm.attr('method'),
 			            url  : frm.attr('action'),
-			            data : 'a=b',
+			            data : frm,
 			            success : function(json){
 			            	console.log(json);
 			            	if (json['status'] == '9999'){
@@ -87,7 +92,7 @@
 			            }
 			        }); 
 		        
-			});
+			});  */
 		});
 	</script> 
 </body>

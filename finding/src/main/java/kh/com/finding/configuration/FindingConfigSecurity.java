@@ -27,8 +27,8 @@ public class FindingConfigSecurity extends WebSecurityConfigurerAdapter {
 	private CustomAccessDeniedHandler customAccessDeniedHandler;
 	@Autowired 
 	private LogoutSuccessHandlers logoutSuccessHandlers;
- 
-	
+	@Autowired
+	private CustomAuthenticationSerivce customAuthenticationSerivce;
 	
 
 	@Override
@@ -42,7 +42,7 @@ public class FindingConfigSecurity extends WebSecurityConfigurerAdapter {
 						    ,"/{locale:en|kh}/register"
 						    ,"/{locale:en|kh}/services/**")
 							.permitAll()
-				.antMatchers("/{locale:en|kh}/userinfo/**").hasAnyRole("ROLE_USER")
+				.antMatchers("/{locale:en|kh}/userinfo/**").access("hasRole('ROLE_USER')")
 				.antMatchers("/{locale:en|kh}/admin-info/**").hasAnyRole("ROLE_ADMIN")
 				.anyRequest().authenticated()
 				.and()
@@ -63,7 +63,10 @@ public class FindingConfigSecurity extends WebSecurityConfigurerAdapter {
 				.permitAll()
 				.and()
 			//.exceptionHandling().accessDeniedPage("/error/403");
-			.exceptionHandling().accessDeniedHandler(customAccessDeniedHandler);
+			.exceptionHandling().accessDeniedHandler(customAccessDeniedHandler)
+			.and()
+			.csrf().disable();
+			
 	}
 
 
@@ -85,12 +88,12 @@ public class FindingConfigSecurity extends WebSecurityConfigurerAdapter {
 		web.ignoring().antMatchers("/static/**");
 	}
 	
-	/*@Bean(name = "multipartResolver")
+	@Bean(name = "multipartResolver")
     public MultipartResolver multipartResolver() {
 		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
         //multipartResolver.setMaxUploadSize(2097152);
         multipartResolver.setMaxUploadSize(5242880);
         return multipartResolver;
-    }*/
+    }
 	
 }

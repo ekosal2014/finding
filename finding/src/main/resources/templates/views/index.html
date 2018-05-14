@@ -9,33 +9,37 @@
 </head>
 <body>
 	kladfjalkdsjfalk
-	<a th:href="@{/{url}/login?redictUrl={redict}(url=${session.URL_LOCATION_DEFAULT},redict=${session.URL_CHANGE_LEANGUAGE})}">Login</a>
+	<a th:href="@{/login?redictUrl={redict}(redict=${session.URL_CHANGE_LEANGUAGE})}">Login</a>
 	<a th:href="@{/{url}/logout(url=${session.URL_LOCATION_DEFAULT})}">logout</a>
 	<a th:href="@{/kh/{url}(url=${session.URL_CHANGE_LEANGUAGE})}">khmer</a>
 	<a th:href="@{/en/{url}(url=${session.URL_CHANGE_LEANGUAGE})}">english</a>
 	<a th:href="@{/{url}/register(url=${session.URL_LOCATION_DEFAULT})}">Register</a>
-	<a th:href="@{/{url}/services(url=${session.URL_LOCATION_DEFAULT})}">services</a>
+	<a th:href="@{/{url}/userinfo/services(url=${session.URL_LOCATION_DEFAULT})}">services</a>
 	<div sec:authorize="isAuthenticated()">
 	  This content is only shown to authenticated users.
-	 	  <div th:text="${session.ENTITY_USER.password}">
+	 	  <div th:text="${session.ENTITY_USER.authorities[0].role_name}">
 			a;slkfa
 		 </div>
 		 <div th:if="${not #lists.isEmpty(session.ENTITY_USER.services)}">
 			a;slkfa
 		 </div > 
+		  <div th:if="${not #lists.isEmpty(session.ENTITY_USER.authorities)}">
+			role list
+			<div></div>
+		 </div >
 		 <div th:if="${#lists.size(session.ENTITY_USER.services) < 3}">
 		 	Add New
 		 </div> 
 	</div>
- 	<div sec:authorize="hasRole('ADMIN')">
+ 	<div sec:authorize="hasRole('ROLE_ADMIN')">
 	  This content is only shown to administrators.
 	</div> 
-	 <div sec:authorize="hasRole('USER')">
+	 <div sec:authorize="hasRole('ROLE_USER')">
 	  This content is only shown to users.
 	  <span sec:authentication="principal.services"></span>
 	</div> 
 	
-	<form th:action="@{/{url}/userinfo/serviceNew(url=${session.URL_LOCATION_DEFAULT})}" th:method="POST" id="frm-login" enctype="multipart/form-data"> 
+	<form th:action="@{/{url}/serviceNew(url=${session.URL_LOCATION_DEFAULT})}" th:method="POST" id="frm-login" enctype="multipart/form-data"> 
 		
 		
 		<label >Description</label>
