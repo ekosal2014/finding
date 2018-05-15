@@ -1,13 +1,15 @@
 package kh.com.finding.entities;
 
-public class EntityImage {
+import java.util.List;
 
-	private String img_cd    ;
-	private String service_cd;
-	private String title     ;
-	private String image     ;
-	private String reg_dt    ;
-	private String sts       ;
+public class EntityImage extends Images{
+
+	private String img_cd          ;
+	private String service_cd      ;
+	private String title           ;
+	private List<String>  listImage;
+	private String reg_dt          ;
+	private String sts             ;
 	
 	public String getImg_cd() {
 		return img_cd;
@@ -27,12 +29,7 @@ public class EntityImage {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getImage() {
-		return image;
-	}
-	public void setImage(String image) {
-		this.image = image;
-	}
+
 	public String getReg_dt() {
 		return reg_dt;
 	}
@@ -44,6 +41,16 @@ public class EntityImage {
 	}
 	public void setSts(String sts) {
 		this.sts = sts;
+	}
+	@Override
+	public List<String> getListImage() {
+		// TODO Auto-generated method stub
+		return this.listImage;
+	}
+	@Override
+	public void setListImage(List<String> listImage) {
+		// TODO Auto-generated method stub
+		this.listImage = listImage;
 	}
 	
 	

@@ -1,8 +1,11 @@
 package kh.com.finding.entities;
 
+import java.util.List;
+
 public class Images {
 
 	private String image;
+	private List<String> listImage;
 	
 	public String getImage()
 	{
@@ -11,5 +14,13 @@ public class Images {
 	public void setImage(String image){
 	   this.image = image;
 	}
+	public List<String> getListImage() {
+		return listImage;
+	}
+	public void setListImage(List<String> listImage) {
+		this.listImage = listImage;
+	}
+	
+	
 	
 }

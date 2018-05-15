@@ -18,4 +18,11 @@ public class ConstsUtils {
 	public static final String NOTEMPTY_USER_NAME   = "NotEmpty.RegForm.userName";
 	public static final String DUPLICATED_USERNAME  = "Duplicated.RegForm.userName";
 	
+	
+	// path image profile user
+	public static final String PATH_PROFILE_USER_IMAGE = "path.profile.user.image";
+	public static final String PATH_LOGO_IMAGE         = "path.logo.image"        ;
+	public static final String PATH_BANNER_IMAGE       = "path.banner.image"      ;
+	public static final String PATH_IMAGE              = "path.image"             ;
+	
 }

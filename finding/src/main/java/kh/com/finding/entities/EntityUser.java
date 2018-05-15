@@ -202,7 +202,6 @@ public class EntityUser extends Images implements UserDetails {
 
 
 
-
 	
 	
 }
