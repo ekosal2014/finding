@@ -9,5 +9,6 @@ import kh.com.finding.entities.EntityService;
 public interface ServiceMappers {
 	
 	public List<EntityService> loadingServiceByUserName(@Param("username") String username);
+	public boolean insertServiceInformation(EntityService service);
 
 }

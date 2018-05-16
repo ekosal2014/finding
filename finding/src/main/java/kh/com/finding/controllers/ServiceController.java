@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import kh.com.finding.entities.EntityService;
 import kh.com.finding.entities.Images;
+import kh.com.finding.services.SServicesImpl;
 import kh.com.finding.utils.ConstsUtils;
 import kh.com.finding.utils.JsonResponses;
 import kh.com.finding.utils.UploadFileUtils;
@@ -23,6 +24,9 @@ public class ServiceController {
 	
 	@Autowired
 	private Environment env;
+	
+	@Autowired
+	private SServicesImpl sServicesImpl;
 
 	@RequestMapping(value = "/{locale:en|kh}/userinfo/services", method = RequestMethod.GET)
 	public String loadingServiceSearch(){	  
@@ -30,7 +34,7 @@ public class ServiceController {
 	}
 	
 	@RequestMapping( value = "/{locale:en|kh}/userinfo/serviceNew", method = RequestMethod.POST)
-	public @ResponseBody JsonResponses loadingServiceInfo(@ModelAttribute EntityService services,@RequestParam("file") MultipartFile file,HttpServletRequest request) 
+	public @ResponseBody JsonResponses loadingServiceInfo(@ModelAttribute EntityService service,@RequestParam("file") MultipartFile file,HttpServletRequest request) 
 	{
 		//System.out.println(System.getProperty("user.dir"));
 		//System.out.println(request.getLocalName());
@@ -44,11 +48,12 @@ public class ServiceController {
 		// * 
 		// *---------------------------------------------------------------------
 		if (UploadFileUtils.UploadSingleFile(image, file, path)){
-		   services.setLogo(image.getImage());
+		   service.setLogo(image.getImage());
 		}
 		
 		
-		return new JsonResponses("");
+		
+		return sServicesImpl.insertServiceInformation(service);
 	}
 	
 }

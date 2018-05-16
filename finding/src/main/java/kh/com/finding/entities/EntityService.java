@@ -10,6 +10,7 @@ public class EntityService {
 	private int    user_cd    ;
 	private String phone_nm   ;
 	private String address	  ;
+	private String service    ;
 	private String logo       ;
 	private String title      ;
 	private String sub_title  ;
@@ -18,8 +19,10 @@ public class EntityService {
 	private String description;
 	private String work_tm    ;
 	private String work_day   ;
-	private String des_address;
+	private String address_descriptions;
+	private String reg_dt;
 	private String sts        ;
+	
 	private List<EntityImage>  images ;
 	private List<EntityNews>   news   ;
 	
@@ -48,6 +51,13 @@ public class EntityService {
 	}
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	
+	public String getService() {
+		return service;
+	}
+	public void setService(String service) {
+		this.service = service;
 	}
 	public String getLogo() {
 		return logo;
@@ -97,12 +107,7 @@ public class EntityService {
 	public void setWork_day(String work_day) {
 		this.work_day = work_day;
 	}
-	public String getDes_address() {
-		return des_address;
-	}
-	public void setDes_address(String des_address) {
-		this.des_address = des_address;
-	}
+
 	public String getSts() {
 		return sts;
 	}
@@ -123,6 +128,20 @@ public class EntityService {
 		this.news = news;
 	}
 	
+	
+	
+	public String getAddress_descriptions() {
+		return address_descriptions;
+	}
+	public void setAddress_descriptions(String address_descriptions) {
+		this.address_descriptions = address_descriptions;
+	}
+	public String getReg_dt() {
+		return reg_dt;
+	}
+	public void setReg_dt(String reg_dt) {
+		this.reg_dt = reg_dt;
+	}
 	@Override
 	public String toString() {
 		return "  phone_nm    = " + this.phone_nm    + "\n" + 
@@ -135,7 +154,7 @@ public class EntityService {
 			   ", description = " + this.description + "\n" +  
 			   ", work_tm     = " + this.work_tm     + "\n" + 
 			   ", work_day    = " + this.work_day    + "\n" +  
-			   ", des_address = " + this.des_address + "\n" + 
+			   ", des_address = " + this.address_descriptions + "\n" + 
 			   ", sts         = " + this.sts         ;
 	}
 	

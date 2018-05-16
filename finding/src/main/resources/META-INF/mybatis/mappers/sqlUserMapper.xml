@@ -3,7 +3,8 @@
 
 	<select id="loadingByUserName" parameterType="java.lang.String" resultType="kh.com.finding.entities.EntityUser">
 	
-		SELECT    email
+		SELECT    user_cd
+				, email
 				, full_name
 				, user_name
 				, password
@@ -15,7 +16,8 @@
 	
 	<select id="loadingByUserEmail" parameterType="java.lang.String" resultType="kh.com.finding.entities.EntityUser">
 		SELECT 
-				  email
+				  user_cd
+				, email
 				, full_name
 				, user_name
 				, password

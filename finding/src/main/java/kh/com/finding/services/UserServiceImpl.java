@@ -24,23 +24,39 @@ public class UserServiceImpl{
 		JsonResponses  json      = new JsonResponses();
 		EntityUserRole userRole  = new EntityUserRole();
 		try{
-			
+			// * ------------------------------------------------------
+			// * 
+			// * ------------------------------------------------------
 			entityUser.setReg_dt(DateUtils.getDate());
 			entityUser.setSts("0");
 			entityUser.setPassword(passwordEncoder.encode(entityUser.getPassword()));
-			System.out.println(entityUser.toString());
+			// * ------------------------------------------------------
+			// * 
+			// * ------------------------------------------------------
 			userMapper.registerUserInfo(entityUser);
-			
+			// * ------------------------------------------------------
+			// * 
+			// * ------------------------------------------------------
 			userRole.setUser_cd(entityUser.getUser_cd());
 			userRole.setRole_cd(0);
+			// * ------------------------------------------------------
+			// * 
+			// * ------------------------------------------------------
 			userMapper.registerUserRole(userRole);
-			
+			// * ------------------------------------------------------
+			// * 
+			// * ------------------------------------------------------
 			json.setStatus(ConstsUtils.DEFAULT_SUCCESS_STATUS);
 			json.setResutl("success");
+			
 		}catch(Exception e){
+			// * ------------------------------------------------------
+			// * 
+			// * ------------------------------------------------------
 			json.setStatus(ConstsUtils.DEFAULT_ERROR_STATUS);
 			json.setStatus(e.getMessage());
 			e.printStackTrace();
+			
 		}
 		
 		return json;

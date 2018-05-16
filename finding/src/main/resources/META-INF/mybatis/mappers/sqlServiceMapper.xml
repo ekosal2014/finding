@@ -1,6 +1,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kh.com.finding.mappers.ServiceMappers">
-
+   <!-- * =============================================
+   		* loading Service Information 
+   		* =============================================
+    --> 
 	<select id="loadingServiceByUserName" parameterType="java.lang.String" resultType="kh.com.finding.entities.EntityService">
 	
 		SELECT 
@@ -14,6 +17,48 @@
 		  AND u.user_name = #{username}
 	
 	</select>
+	<!-- * ===========================================
+		 * insert information into table service
+		 * ===========================================
+	 -->
+	<insert id="insertServiceInformation" parameterType="kh.com.finding.entities.EntityService">
+		INSERT INTO user_services
+				   	(
+		               user_cd
+		             , phone_nm
+		             , address
+		             , service
+		             , logo
+		             , title
+		             , sub_title
+		             , website
+		             , email
+		             , descriptions
+		             , work_time
+		             , work_day
+		             , address_descriptions
+		             , reg_dt
+		             , sts
+		           )
+			VALUES (			    	  
+			    	  #{user_cd}
+			    	, #{phone_nm}
+			    	, #{address}
+			    	, #{service}
+			    	, #{logo}
+			    	, #{title}
+			    	, #{sub_title}
+			    	, #{website}
+			    	, #{email}			    	
+			    	, #{description}
+			    	, #{work_tm}
+			    	, #{work_day}
+			    	, #{address_descriptions}
+			    	, #{reg_dt}
+			    	, #{sts}
+			     )
+	</insert>
+	
 
 </mapper>
 		

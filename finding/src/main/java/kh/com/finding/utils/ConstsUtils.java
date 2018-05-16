@@ -2,10 +2,13 @@ package kh.com.finding.utils;
 
 public class ConstsUtils {
 
+	// ** (: ----------------------------------------------------------
+	// ** 0. response  message code default....
 	public static final String DEFAULT_ERROR_STATUS   = "9999";
 	public static final String DEFAULT_SUCCESS_STATUS = "0000";
 	
-	/*message code register form*/
+	// ** (: ----------------------------------------------------------
+	// ** 1. response message code check error for form  register user information...
 	public static final String NOTEMPTY_FULL_NAME = "NotEmpty.RegForm.full_name";
 	public static final String NOTEMPTY_EMAIL     = "NotEmpty.RegForm.email";
 	public static final String NOTVALID_EMAIL     = "NotValid.RegForm.email";
@@ -19,7 +22,8 @@ public class ConstsUtils {
 	public static final String DUPLICATED_USERNAME  = "Duplicated.RegForm.userName";
 	
 	
-	// path image profile user
+	// ** (: ---------------------------------------------------------
+	// ** 2. address path image......
 	public static final String PATH_PROFILE_USER_IMAGE = "path.profile.user.image";
 	public static final String PATH_LOGO_IMAGE         = "path.logo.image"        ;
 	public static final String PATH_BANNER_IMAGE       = "path.banner.image"      ;
