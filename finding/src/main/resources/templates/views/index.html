@@ -8,7 +8,6 @@
 <script type="text/javascript" th:src="@{/js/lib/jquery.form.min.js}"></script>
 </head>
 <body>
-	kladfjalkdsjfalk
 	<a th:href="@{/login?redictUrl={redict}(redict=${session.URL_CHANGE_LEANGUAGE})}">Login</a>
 	<a th:href="@{/{url}/logout(url=${session.URL_LOCATION_DEFAULT})}">logout</a>
 	<a th:href="@{/kh/{url}(url=${session.URL_CHANGE_LEANGUAGE})}">khmer</a>
@@ -25,19 +24,22 @@
 		 </div > 
 		  <div th:if="${not #lists.isEmpty(session.ENTITY_USER.authorities)}">
 			role list
-			<div></div>
+		   <div>
+		   		<select>
+		   			  <option th:each="service : ${session.ENTITY_USER.services}" th:value="${service.service_cd}" th:text="${service.title}"></option>
+		   		</select>
+		   		
+		   </div>
 		 </div >
 		 <div th:if="${#lists.size(session.ENTITY_USER.services) < 3}">
 		 	Add New
 		 </div> 
+		 
 	</div>
  	<div sec:authorize="hasRole('ROLE_ADMIN')">
 	  This content is only shown to administrators.
 	</div> 
-	 <div sec:authorize="hasRole('ROLE_USER')">
-	  This content is only shown to users.
-	  <span sec:authentication="principal.services"></span>
-	</div> 
+
 	<img alt="" th:src="@{/images/profiles/20180515143757630.jpg}" width="50" height="50">
 </body> 
 </html>
