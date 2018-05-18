@@ -8,6 +8,8 @@
 <script type="text/javascript" th:src="@{/js/lib/jquery.form.min.js}"></script>
 </head>
 <body>
+
+	
 	<a th:href="@{/login?redictUrl={redict}(redict=${session.URL_CHANGE_LEANGUAGE})}">Login</a>
 	<a th:href="@{/{url}/logout(url=${session.URL_LOCATION_DEFAULT})}">logout</a>
 	<a th:href="@{/kh/{url}(url=${session.URL_CHANGE_LEANGUAGE})}">khmer</a>
