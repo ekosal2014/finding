@@ -1,0 +1,218 @@
+@charset "utf-8";
+body{
+	background-color:white;
+	padding:0px;
+	margin:0px;
+	font-size: 12px !important;
+	 font-family: "Khmer OS Bokor", "Khmer OS Content", "Khmer OS Battambang", "Khmer OS Siemreap", "Khmer OS System" !important;
+}
+.wrapper_header{
+	background-color:white;
+	position: relative;
+    width: 100%;
+    min-width: 1025px;
+    height: 70px;
+    margin: 0 auto;
+    box-sizing: border-box;
+	border-top:3px solid red;
+    z-index: 10;
+	border-bottom:1px solid #F5F5F5;
+}
+.wrapper_header .wrapper_logo{
+	position:absolute;
+	top:17px;
+	left:20px;
+	
+}
+.wrapper_header .wrapper_content{
+	width:1025px;
+	margin:0 auto;
+	position:relative;
+}
+.wrapper_header .wrapper_top{
+	text-align:right;
+	margin-right:10px;
+}
+
+.wrapper_header  .wrapper_menu{
+	margin :5px 0 0 60px;
+}
+a{
+	text-decoration:none;
+	color:#555;
+}
+ul{
+	padding:0px;
+	margin:0px;
+}
+ul li{
+	list-style:none;
+	display:table-cell;
+	padding:5px;
+}
+.wrapper_branding {
+    position: relative;
+    min-width: 1025px;
+    height: 300px;
+    z-index: 1;
+}
+.slide4 {
+    height: 300px;
+    background: url(../images/b_slide/slide4_bg.jpg) no-repeat 45% 50%;
+    background-size: cover;
+}
+.slide4 .txt {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -90px 0 0 30px
+}
+.slide11 {
+    height: 300px;
+    background: url(../images/b_slide/slide11_bg.jpg) no-repeat 45% 50%;
+    background-size: cover;
+}
+.slide11 .txt {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -107px 0 0 -380px;
+}
+.slide13 {
+    height: 300px;
+    background: url(../images/b_slide/slide13_bg.jpg) no-repeat 45% 50%;
+    background-size: cover;
+}
+.slide13 .txt {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -107px 0 0 -380px;
+}
+.slide14 {
+    height: 300px;
+    background: url(../images/b_slide/slide14_bg.jpg) no-repeat 45% 50%;
+    background-size: cover;
+}
+.slide14 .txt {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -107px 0 0 -380px;
+}
+.slide17 {
+    height: 300px;
+    background: url(../images/b_slide/slide17_bg.jpg) no-repeat 45% 50%;
+    background-size: cover;
+}
+.slide17 .txt {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -100px 0 0 -500px;
+}
+.bx-wrapper, .bx-viewport {
+    height: 300px !important; 
+}
+.wrapper_footer{
+	position:relative;
+	left:0px;
+	bottom:0px;
+	background-color:#F5F5F5;
+	border-top:1px solid #D3D3D3;
+	height:100px;
+	width:100%;
+	min-width:1025px;
+}
+.wrapper_content_bb{
+	min-height:800px;
+}
+.wrapper_content_hh{
+	width:1025px;
+	margin:0 auto;
+	
+}
+.wrapper_content_tt{
+	margin-top:10px;
+	height:30px;
+	background-color:#F5F5F5;
+	border:1px solid #D3D3D3;
+	position:relative;
+}
+.wrapper_content_tt .tt{
+	margin-left : 10px;
+}
+.wrapper_content_tt .more{ 
+	position:absolute;
+	right:10px;
+}
+.wrapper_content_ct{
+	padding : 10px 0 10px 0;
+}
+.wrapper_content_ct .wrapper_box{
+	border:1px solid #D3D3D3;
+	width:180px;
+	padding : 5px;
+	float:left;
+	margin:0 0 10px 10px;
+    color:#555;
+}
+.wrapper_content_ct .wrapper_box .wrapper_img{
+	width:100%;
+	text-align:center;
+}
+.wrapper_content_ct .wrapper_box .tt{
+	font-weight:bold;
+	font-size:14px;
+    line-height:20px;
+}
+.wrapper_content_ct .wrapper_box .phone{
+	font-size:12px;
+    line-height:20px;
+}
+.wrapper_content_ct .wrapper_box .service{
+	font-size:12px;
+    line-height:20px;
+}
+
+/*<!-- login -->*/
+.wrapper_login{
+	margin:0 auto;
+	padding-top:100px;
+}
+
+.wrapper_login .login_left{
+	border-right:1px solid #D3D3D3;
+	width:25%;
+	padding-left:25%;
+	float:left;
+}
+.wrapper_login .login_right{
+	margin-left:50%;
+	padding-left:10%;
+	
+}
+.wrapper_login .login_right .fb{
+	background-color: #5975b1;
+    color: #fff;
+	display: block;
+    width: 250px;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+	text-align:center;
+	margin-top:20px;
+}
+.wrapper_login .login_right .google{
+	background-color: #df4a32;
+    color: #fff;
+	display: block;
+    width: 250px;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+	text-align:center;
+	margin-top:10px;
+}
+	
+	
