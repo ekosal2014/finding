@@ -3,15 +3,17 @@
 	<head>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<!-- jQuery library (served from Google) -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<!-- bxSlider Javascript file -->
 		<script src="bxslider/jquery.bxslider.min.js"></script>
 		<!-- bxSlider CSS file -->
 		<link href="bxslider/jquery.bxslider.css" rel="stylesheet" />
+		<script src='https://www.google.com/recaptcha/api.js'></script>
+		
 	</head>
 	<body>
 		<div>
-			<div class="wrapper_header">
+			<div class="wrapper_header" style="background-color:#fafafa;">
 				<div class="wrapper_content">
 					<div class="wrapper_top">
 						<a href="login.html"><span>Login</span></a>
@@ -23,16 +25,42 @@
 					</div>
 					<div class="wrapper_menu">
 						<ul>
-							<li><a href="#none"><span>Home</span></a></li>
-							<li><a href="#none"><span>Service</span></a></li>
+							<li><a href="index.html"><span>Home</span></a></li>
+							<li><a href="service.html"><span>Service</span></a></li>
 							<li><a href="#none"><span>Place</span></a></li>
 						</ul>
 					</div>
 				</div>				
 			</div>
-			<div class="wrapper_content_bb">
+			<div class="wrapper_content_bb" >
 				<div class="wrapper_content_hh">
-					
+					<div class="wrapper_login">						
+						<div class="register_left">
+						<form>
+							<div><label>Full Name </label></div>
+							<div><input type="text"/></div>
+							<div><label>Email </label></div>
+							<div><input type="text"/></div>
+							<div><label>User Name </label></div>
+							<div><input type="text"/></div>
+							<div><label>Password </label></div>
+							<div><input type="password"/></div>
+							<div><label>Confirm Password </label></div>
+							<div><input type="password"/></div>
+							<div class="g-recaptcha col-sm-5"
+							 th:attr="data-sitekey=6LeTp1UUAAAAAPYJjseRXl_YCurNDWEd_TdzoHcD"></div>
+							<span id="captchaError" class="alert alert-danger col-sm-4"
+							  style="display:none"></span>
+							<div><button>Login</button></div>
+						</form>
+						</div>
+						<div class="register_right">
+							<div>
+								
+							
+							</div>
+						</div>
+					</div>
 					
 				</div>
 			</div>

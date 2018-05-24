@@ -17,6 +17,7 @@ body{
 	border-top:3px solid red;
     z-index: 10;
 	border-bottom:1px solid #F5F5F5;
+	box-shadow: inset 1px 1px 0 rgba(0,0,0,.1), inset 0 -1px 0 rgba(0,0,0,.07);
 }
 .wrapper_header .wrapper_logo{
 	position:absolute;
@@ -213,6 +214,20 @@ ul li{
     border-radius: 4px;
 	text-align:center;
 	margin-top:10px;
+}
+/* Register..... */
+.wrapper_login .register_left{
+	width:25%;
+	padding-left:25%;
+	float:left;
+}
+.wrapper_login .register_right{
+	border: 1px solid #D3D3D3;
+    border-radius: 4px;
+	margin-left:50%;
+	padding-left:10%;
+	height:300px;
+	width:500px;
 }
 	
 	
