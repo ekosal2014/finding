@@ -339,9 +339,10 @@ ul li{
     border-radius: 4px;
 	margin-left:50%;
 	padding-left:10%;
-	height:300px;
-	width:400px;
-	min-width:300px;
+	height: 286px;
+    width: 400px;
+    min-width: 300px;
+    margin-top: 26px;
 }
 .wrapper_login .register_left .txt{
 	width: 260px !important;
