@@ -238,7 +238,7 @@ ul li{
 .wrapper-menu-item .wrapper-menu-ct{
 	width:1025px;
 	margin:0 auto;
-	padding:15px;
+	padding:15px 0;
 }
 .wrapper-menu-item .wrapper-menu-ct ul{
 	width:100%;
